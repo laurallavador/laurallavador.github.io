@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Portfolio | Laura Llavador — Redesigned</title>
+  <meta name="description" content="Product UX/UI Designer - Laura Llavador. Redesigned portfolio (playful + premium)." />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400;600&family=Poppins:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+  <!-- decorative blobs -->
+  <div class="blob a" aria-hidden="true"></div>
+  <div class="blob b" aria-hidden="true"></div>
+
+  <header class="header">
+    <div class="container">
+      <nav class="nav" aria-label="Main navigation">
+        <a class="logo" href="#">
+          <img src="./images/logo.svg" alt="Laura Llavador logo" />
+        </a>
+
+        <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-links">☰</button>
+
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#about">About</a></li>
+          <li><a href="#projects">Work</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+          <div class="socials" style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/in/laurallavadorgarcia/" aria-label="LinkedIn"> <i class="fa-brands fa-linkedin" style="font-size:1.5rem;"></i></a>
+        <a href="https://www.behance.net/laurallavador" aria-label="Behance"><i class="fa-brands fa-behance" style="font-size:1.5rem;"></i></a>
+      </div>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="container hero-inner">
+      <div class="hero-copy">
+        <small style="font-weight:500;color:var(--muted);font-size:18px; letter-spacing:0.3rem;">PRODUCT UI/UI DESIGNER & MULTIMEDIA</small>
+        <span class="intro-text" style=" margin-bottom:10px; margin-top: 30px;">Where creativity meets usability</span>
+        <h1 class="reveal" style="margin-bottom: 60px;">
+          Hi, I'm <span class="main-title">Laura Llavador</span><br>
+        </h1>
+        <!--<p class="reveal">I craft delightful digital products with purpose — from research and UX flows to high-fidelity UI and 3D visuals.</p>-->
+
+        <div class="cta-row reveal">
+          <a href="#projects" class="btn-primary">See my work</a>
+          <a href="#contact" class="btn-secondary">Let’s talk</a>
+        </div>
+
+        <!-- playful pictogram (doodle) -->
+        <div style="margin-top:20px;display:flex;gap:10px;align-items:center">
+          <svg width="60" height="60" viewBox="0 0 40 40" class="floating" aria-hidden="true">
+  <image 
+    href="./images/delfin.png" 
+    x="6" 
+    y="6" 
+    width="30" 
+    height="30"
+  />
+</svg>
+
+          <div style="font-size:14px;color:var(--muted)">Currently working at • NEXTPORT BY MOFFATT & NICHOL</div>
+        </div>
+      </div>
+
+      
+
+      <div class="hero-mockup reveal" id="hero-mockup">
+        <img src="./images/medusa.svg" alt="doodle" class="floating-doodle"/>
+        <div class="mockup-card" aria-hidden="true">
+          <img src="./images/me.png" alt="Featured project mockup"/>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="about section">
+    <div class="container">
+      <div class="about-grid reveal">
+        <div class="about-lead">
+          <h2 class="h2left">Transforming ideas<br>into experiences</h2>
+          <p class="muted">I love turning ideas into meaningful digital experiences.</p>
+        </div>
+        <div class="about-body h2left">
+          <p>I see design as a way to connect stories, emotions, and functionality, where every detail has a reason and every pixel has a voice. Whether I’m shaping a new brand, designing an interface, or modeling something in 3D, my goal is always the same: make it clear, human, and a little bit magical.</p>
+
+          <div style="margin-top:18px">
+            <!-- <a href="#projects" class="btn-primary">Explore projects</a> -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS  -->
+  <section id="projects" class="projects section">
+    <div class="container">
+      <div class="projects-header reveal">
+        <h2>Featured Work <span class="arrow-down">↓</span></h2>
+        <a class="all-work-link" href="#">ALL WORK →</a>
+      </div>
+
+     <!-- Featured project (wide) -->
+       <div class="projects-grid">
+      <article class="project-card featured reveal">
+        <img class="project-image" src="./images/np-hero.png" alt="Nextport" />
+        <div class="project-overlay">
+          <h3 class="project-title">NEXTPORT</h3>
+          <p class="muted">Product design — Mobile app — Currently working</p>
+          <div style="margin-top:12px" class="project-tags">
+            <span class="tag">SaaS Platform</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">Research</span>
+          </div>
+          <div style="margin-top:18px">
+            <a href="nextport.html" class="project-btn">SEE PROJECT →</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card featured reveal">
+        <img class="project-image" src="./images/nohaymain.png" alt="No Hay Vida Sin Comida" />
+        <div class="project-overlay">
+          <h3 class="project-title">NO HAY VIDA SIN COMIDA</h3>
+          <p class="muted">Product design — Mobile app — Currently working</p>
+          <div style="margin-top:12px" class="project-tags">
+            <span class="tag">SaaS Platform</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">Research</span>
+          </div>
+          <div style="margin-top:18px">
+            <a class="project-btn" style="background-color: grey; color: rgba(255, 255, 255, 0.582);">Cooming soon</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card featured reveal">
+        <img class="project-image" src="./images/webflowmain.png" alt="Webflow" />
+        <div class="project-overlay">
+          <h3 class="project-title">WEBFLOW</h3>
+          <p class="muted">Product design — Mobile app — Currently working</p>
+          <div style="margin-top:12px" class="project-tags">
+            <span class="tag">SaaS Platform</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">Research</span>
+          </div>
+          <div style="margin-top:18px">
+            <a class="project-btn" style="background-color: grey; color: rgba(255, 255, 255, 0.582);">Cooming soon</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="project-card featured reveal">
+        <img class="project-image" src="./images/palotes main.png" alt="Damel Group" />
+        <div class="project-overlay">
+          <h3 class="project-title">DAMEL GROUP</h3>
+          <p class="muted">Product design — Mobile app — Currently working</p>
+          <div style="margin-top:12px" class="project-tags">
+            <span class="tag">SaaS Platform</span>
+            <span class="tag">UX/UI</span>
+            <span class="tag">Research</span>
+          </div>
+          <div style="margin-top:18px">
+            <a href="damelgroup.html" class="project-btn">SEE PROJECT →</a>
+          </div>
+        </div>
+      </article>
+
+      </div>
+    </div>
+    </div>
+  </section> 
+
+ 
+
+  <!-- SKILLS -->
+  <section id="skills" class="skills section">
+    <div class="container">
+      <h2 class="reveal">Habilidades</h2>
+      <div class="skills-marquee reveal" aria-hidden="false">
+        <ul class="skills-list">
+          <li>Figma</li>
+          <li>Adobe XD</li>
+          <li>HTML / CSS / JS</li>
+          <li>Design Systems</li>
+          <li>Prototipado</li>
+          <li>User Research</li>
+          <li>Wireframing</li>
+        </ul>
+        <ul class="skills-list" aria-hidden="true">
+          <li>Figma</li>
+          <li>Adobe XD</li>
+          <li>HTML / CSS / JS</li>
+          <li>Design Systems</li>
+          <li>Prototipado</li>
+          <li>User Research</li>
+          <li>Wireframing</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact section">
+    <div class="container reveal">
+      <h2>Contacto</h2>
+      <p class="muted">¿Tienes un proyecto o colaboración en mente? ¡Hablemos!</p>
+      <a href="mailto:hola@laurallavador.com" class="btn-primary" style="margin-top:12px">Escríbeme</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <p>&copy; 2025 Laura Llavador. Todos los derechos reservados.</p>
+      <div class="socials" style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/in/laurallavadorgarcia/" aria-label="LinkedIn"> <i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.behance.net/laurallavador" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="js/main.js"></script>
+</body>
+</html>
