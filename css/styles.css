@@ -618,7 +618,7 @@ section.section {
   white-space: nowrap;
   border-radius: 12px;
   padding: 12px;
-  background: linear-gradient(90deg, rgba(123, 97, 255, 0.04), rgba(74, 209, 192, 0.02));
+  background: transparent;
   display: flex;
   gap: 16px
 }
@@ -630,6 +630,12 @@ section.section {
   padding: 0;
   margin: 0;
   animation: marquee 14s linear infinite
+}
+
+.skills-list li{
+  font-weight: 500;
+  font-size: 24px;
+  color: #333;
 }
 
 /* Ícono entre cada <li> */
