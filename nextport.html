@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>NextPort | Laura Llavador</title>
-  <meta name="description" content="NextPort — Plataforma para operaciones portuarias. Case study: reto, solución, resultados y rol." />
+  <meta name="description" content="NextPort — Port Industry operations SaaS. Product UX/UI design" />
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -57,10 +57,10 @@ At NextPort, the Technology & Innovation SaaS platform by Moffatt & Nichol, I de
 
 
 
-        <div class="hero-meta" style="display:flex; gap:80px; margin-top:1.2rem; flex-wrap:wrap; color:var(--muted);">
-          <div><strong style="font-weight: 50;color: rgb(145, 170, 176);">Years</strong> <br> <p style="font-size: 20px; color: aliceblue;">Product Designer</p></div>
-          <div><strong style="font-weight: 50; color: rgb(145, 170, 176);">Tool</strong><br> <p style="font-size: 20px; color: aliceblue;"> Figma</p></div>
-          <div><strong style="font-weight: 50; color: rgb(145, 170, 176);">Users satisfaction</strong><br> <p style="font-size: 20px; color: aliceblue;">98%</p></div>        </div>
+        <div class="hero-meta" style="display:flex; gap:20px; margin-top:1.2rem; flex-wrap:wrap; color:var(--muted);">
+          <div><strong style="font-weight: 50;color: rgb(145, 170, 176);">Years</strong>  <p style="font-size: 20px; color: aliceblue;">Product Designer</p></div>
+          <div><strong style="font-weight: 50; color: rgb(145, 170, 176);">Tool</strong> <p style="font-size: 20px; color: aliceblue;"> Figma</p></div>
+          <div><strong style="font-weight: 50; color: rgb(145, 170, 176);">Users satisfaction</strong> <p style="font-size: 20px; color: aliceblue;">98%</p></div>        </div>
 
 
     </div>
@@ -325,8 +325,8 @@ The result is an ecosystem of interfaces that feel natural, reduce cognitive loa
 
       <style>
         /* Scoped styles para la sección skills */
-        #skills .skills-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:22px; }
-        .skill-card { background:var(--card); border-radius:12px; padding:18px; box-shadow:none; }
+  #skills .skills-grid { display:grid; grid-template-columns: repeat(3,1fr); gap:18px; margin-top:22px; align-items: start; }
+  .skill-card { background:var(--card); border-radius:12px; padding:18px; box-shadow:none; box-sizing: border-box; width:100%; display:flex; flex-direction:column; }
         .skill-card h4 { margin:0 0 6px; font-weight:500; }
         .skill-item { display:flex; align-items:center; gap:12px; margin:12px 0; }
         .skill-item .label { flex:1; font-size:14px; color:var(--muted); }
@@ -347,10 +347,12 @@ The result is an ecosystem of interfaces that feel natural, reduce cognitive loa
 
         @media (max-width: 900px) {
           #skills .skills-grid { grid-template-columns: repeat(2,1fr); }
+          #skills .skills-grid > .skill-card { width: 100%; }
           .skills-bottom { grid-template-columns: 1fr; }
         }
         @media (max-width: 560px) {
           #skills .skills-grid { grid-template-columns: 1fr; }
+          #skills .skills-grid > .skill-card { width: 100%; }
         }
       </style>
 
