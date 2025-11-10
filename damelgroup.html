@@ -1,80 +1,225 @@
 <!doctype html>
-<html lang="en">
+<html lang="es">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Damel Group — Multimedia Design | Laura Llavador</title>
-  <meta name="description" content="Case study: brand transformation and multimedia communication strategy for Damel Group." />
+  <meta name="description" content="Multimedia design, social content, photography and motion for Damel Group — case study by Laura Llavador" />
 
-  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Poppins:ital,wght@0,600;0,700;1,500&display=swap" rel="stylesheet">
-
-  <!-- Styles -->
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400;600&family=Poppins:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
-</head>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
 
+</head>
 <body>
 
-  <!-- HEADER -->
   <header class="header">
     <div class="container nav">
-      <a href="index.html" class="logo" aria-label="Back">‹ Back</a>
+      <a href="index.html" class="logo" aria-label="Volver">‹ Back</a>
       <nav>
-        <ul class="nav-links">
+        <ul class="nav-links" aria-hidden="true">
           <li><a href="index.html#projects">Projects</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="container hero-inner">
+  <!-- HERO (styled like NextPort) -->
+  <section class="hero" style="background: #e3af12; height: 40rem;">
+    <div class="container hero-inner" style="grid-template-columns: 1fr 420px;">
 
       <div class="hero-copy">
-        <div class="hero-kicker" style="font-weight:600; letter-spacing:0.3rem; margin-bottom:0.6rem; color:var(--accent-4);">BRAND TRANSFORMATION</div>
+        <h1 class="hero-title">Damel Group</h1>
 
-        <h1 class="hero-title main-title" style="font-size: clamp(34px, 6vw, 50px); line-height:1.10; margin:0 0 0.6rem;">
-          Damel Group — <br> Multimedia Design & Communication
-        </h1>
-
-        <div class="pills" style="display:flex; gap:10px; flex-wrap:wrap; margin:0.6rem 0;">
-          <span class="pill">Branding</span>
-          <span class="pill">Social Media</span>
-          <span class="pill">Motion Design</span>
-          <span class="pill">Content Strategy</span>
+        <div class="pills" style="display:flex; gap:10px; flex-wrap:wrap; margin:0.6rem 0; margin-bottom: 40px;">
+          <span class="pill" style="background-color:#a3005c">Multimedia</span>
+          <span class="pill" style="background-color:#a3005c">Motion</span>
+          <span class="pill" style="background-color:#a3005c">Photography</span>
+          <span class="pill" style="background-color:#a3005c">Brand</span>
         </div>
 
-        <p class="hero-lead" style="max-width:ch; margin-top:0.6rem; margin-bottom:2rem; color:var(--muted); font-weight: 50;">
-          I worked as a <strong>Multimedia Designer</strong> within Damel Group’s Communication Department, helping transform the company into a fresh, youthful brand with a strong digital and social media presence.
-        </p>
+        <p class="hero-lead">During my time at Damel Group — a global brand present in over 65 countries — I produced multimedia content across platforms: social media, TV adverts, in-store screens and corporate communications. I led product photography, motion pieces and 360º campaigns that connected brand and audience.</p>
 
-        <div class="hero-meta" style="display:flex; gap:80px; margin-top:1.2rem; flex-wrap:wrap; color:var(--muted);">
-          <div><strong style="font-weight: 200;">Role</strong> <br> <p style="font-size: 20px;">Multimedia Designer (Communication Area)</p></div>
-          <div><strong style="font-weight: 200;">Duration</strong><br> <p style="font-size: 20px;">Almost 2 years (Full-time)</p></div>
-          <div><strong style="font-weight: 200;">Focus</strong><br> <p style="font-size: 20px;">Brand Presence & Visual Identity</p></div>
-        </div>
-
-        <div class="cta-row" style="margin-top:1.4rem; display:flex; gap:12px;">
-          <a class="btn-primary" href="#case-process">View Case Study</a>
-          <a class="btn-secondary" href="#visual-gallery">View Visuals</a>
+        <div class="hero-meta" style="display:flex; gap:1rem; margin-top:1.2rem; flex-wrap:wrap; color:var(--muted);">
+          <div><strong style="font-weight: 50; color: rgb(42, 42, 42);">Years</strong><p style="font-size: 20px; color: rgb(17, 17, 17);">2</p></div>
+          <div><strong style="font-weight: 50; color: rgb(42, 42, 42);">Tools</strong><p style="font-size: 20px; color: rgb(17, 17, 17);">Adobe</p></div>
+          <div><strong style="font-weight: 50; color: rgb(42, 42, 42);">Focus</strong><p style="font-size: 20px; color: rgb(17, 17, 17);">Marketing 360º</p></div>
         </div>
       </div>
 
-      <div class="hero-mockup" aria-hidden="true" style="display:flex; align-items:center; justify-content:center;">
-        <img src="./images/palotes main.png" alt="Damel Group project visuals" style="width:100%; max-width:520px; border-radius:12px; box-shadow:0 12px 30px rgba(112,112,112,0.25); object-fit:cover;">
+             <!-- Spotify -->
+      <div class="main">
+        <div class="currentplaying">
+          <svg height="50px" width="50px" viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" class="spotify">
+            <radialGradient gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -534)" r="43.888" cy="572.064"
+              cx="33.34" id="ipdIa4~cOclR8yt_ClW93a">
+              <stop stop-color="#f4e9c3" offset="0"></stop>
+              <stop stop-color="#f8eecd" offset=".219"></stop>
+              <stop stop-color="#fdf4dc" offset=".644"></stop>
+              <stop stop-color="#fff6e1" offset="1"></stop>
+            </radialGradient>
+            <path
+              d="M51.03,37.34c0.16,0.98,1.08,1.66,2.08,1.66h5.39c2.63,0,4.75,2.28,4.48,4.96	C62.74,46.3,60.64,48,58.29,48H49c-1.22,0-2.18,1.08-1.97,2.34c0.16,0.98,1.08,1.66,2.08,1.66h8.39c1.24,0,2.37,0.5,3.18,1.32	C61.5,54.13,62,55.26,62,56.5c0,2.49-2.01,4.5-4.5,4.5h-49c-1.52,0-2.9-0.62-3.89-1.61C3.62,58.4,3,57.02,3,55.5	C3,52.46,5.46,50,8.5,50H14c1.22,0,2.18-1.08,1.97-2.34C15.81,46.68,14.89,44,13.89,44H5.5c-2.63,0-4.75-2.28-4.48-4.96	C1.26,36.7,3.36,35,5.71,35H8c1.71,0,3.09-1.43,3-3.16C10.91,30.22,9.45,29,7.83,29H4.5c-2.63,0-4.75-2.28-4.48-4.96	C0.26,21.7,2.37,20,4.71,20H20c0.83,0,1.58-0.34,2.12-0.88C22.66,18.58,23,17.83,23,17c0-1.66-1.34-3-3-3h-1.18	c-0.62-0.09-1.43,0-2.32,0h-9c-1.52,0-2.9-0.62-3.89-1.61S2,10.02,2,8.5C2,5.46,4.46,3,7.5,3h49c3.21,0,5.8,2.79,5.47,6.06	C61.68,11.92,60.11,14,57.24,14H52c-2.76,0-5,2.24-5,5c0,1.38,0.56,2.63,1.46,3.54C49.37,23.44,50.62,24,52,24h6.5	c3.21,0,5.8,2.79,5.47,6.06C63.68,32.92,61.11,35,58.24,35H53C51.78,35,50.82,36.08,51.03,37.34z"
+              fill="url(#ipdIa4~cOclR8yt_ClW93a)"></path>
+            <linearGradient gradientUnits="userSpaceOnUse" gradientTransform="translate(0 -534)" y2="590.253"
+              y1="530.096" x2="32" x1="32" id="ipdIa4~cOclR8yt_ClW93b">
+              <stop stop-color="#42d778" offset="0"></stop>
+              <stop stop-color="#3dca76" offset=".428"></stop>
+              <stop stop-color="#34b171" offset="1"></stop>
+            </linearGradient>
+            <path
+              d="M57,32c0,12.837-9.663,23.404-22.115,24.837C33.942,56.942,32.971,57,32,57	c-1.644,0-3.25-0.163-4.808-0.471C15.683,54.298,7,44.163,7,32C7,18.192,18.192,7,32,7S57,18.192,57,32z"
+              fill="url(#ipdIa4~cOclR8yt_ClW93b)"></path>
+            <path
+              d="M41.683,44.394c-0.365,0-0.731-0.181-1.096-0.365c-3.471-2.009-7.674-3.105-12.24-3.105	c-2.559,0-5.116,0.364-7.491,0.912c-0.365,0-0.914,0.183-1.096,0.183c-0.914,0-1.461-0.732-1.461-1.462	c0-0.913,0.547-1.463,1.279-1.643c2.923-0.732,5.846-1.096,8.951-1.096c5.116,0,9.866,1.276,13.885,3.655	c0.548,0.364,0.914,0.73,0.914,1.642C43.145,43.847,42.414,44.394,41.683,44.394z M44.241,38.181c-0.547,0-0.912-0.18-1.279-0.364	c-3.835-2.375-9.135-3.839-15.163-3.839c-2.924,0-5.664,0.366-7.674,0.916c-0.549,0.18-0.731,0.18-1.096,0.18	c-1.096,0-1.827-0.912-1.827-1.826c0-1.096,0.549-1.645,1.461-2.009c2.74-0.73,5.481-1.279,9.317-1.279	c6.213,0,12.241,1.463,16.991,4.384c0.73,0.364,1.096,1.096,1.096,1.826C46.069,37.269,45.337,38.181,44.241,38.181z M47.165,30.876	c-0.548,0-0.731-0.182-1.279-0.364c-4.385-2.559-10.961-4.021-17.356-4.021c-3.289,0-6.577,0.366-9.5,1.096	c-0.366,0-0.731,0.182-1.279,0.182c-1.279,0.183-2.193-0.912-2.193-2.192c0-1.279,0.731-2.009,1.644-2.192	c3.471-1.096,7.125-1.462,11.327-1.462c6.943,0,14.25,1.462,19.731,4.567c0.73,0.366,1.278,1.096,1.278,2.193	C49.357,29.961,48.442,30.876,47.165,30.876z"
+              fill="#fff"></path>
+          </svg>
+          <p class="heading">Currently Playing</p>
+        </div>
+        <div class="loader">
+          <div class="song">
+            <p class="name">Lollipop</p>
+            <p class="artist">MIKA</p>
+          </div>
+          <div class="albumcover"></div>
+          <div class="loading">
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+            <div class="load"></div>
+          </div>
+        </div>
+        <div class="loader">
+          <div class="song">
+            <p class="name">Happy</p>
+            <p class="artist">Pharrell Williams</p>
+          </div>
+          <div class="albumcover"></div>
+          <div class="play"></div>
+        </div>
+        <div class="loader">
+          <div class="song">
+            <p class="name">Best day of my life</p>
+            <p class="artist">American Authors</p>
+          </div>
+          <div class="albumcover"></div>
+          <div class="play"></div>
+        </div>
       </div>
 
     </div>
   </section>
 
 
+  <!-- OVERVIEW -->
+  <section class="section">
+    <div class="container">
+      <div class="section-header" style="margin-bottom:80px;">
+        <h2>Overview</h2>
+        <p>I created and edited engaging content for social media, TV and internal screens. My work included product photography, video editing, motion graphics and creative assets for campaigns and partners.</p>
+      </div>
+
+      <div class="feature">
+        <div class="feature-text">
+          <h3>What I did</h3>
+      
+        
+       <details open>
+        <summary>
+          <div class="label"><span class="emoji">🎥</span><span>Social media content</span></div>
+          <div class="chev">+</div>
+        </summary>
+        <div class="content">
+          <p>I created and edited engaging content for social media, from graphic posts to dynamic videos. I work on pacing, narrative and format for each platform (feed, stories, reels), and optimize versions for mobile.</p>
+          <p class="small">Tools: Premiere Pro, After Effects, Photoshop, Illustrator.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="label"><span class="emoji">📸</span><span>Product photography and editing</span></div>
+          <div class="chev">+</div>
+        </summary>
+        <div class="content">
+          <p>I handled product photography and its full editing workflow, preparing assets for everything from social media to TV advertising. I focus on lighting, art direction and refined retouching to keep the catalog visually consistent.</p>
+          <p class="small">Includes: retouching, background separation, packing shots and lifestyle imagery.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="label"><span class="emoji">🏟️</span><span>Creative assets for Vitaldin Sport</span></div>
+          <div class="chev">+</div>
+        </summary>
+        <div class="content">
+          <p>I designed creative pieces for a major sports club (Vitaldin Sport): banners, matchday graphics and social media assets aligned with the club’s identity.</p>
+          <p class="small">Coordination with the club’s marketing team and adaptation to seasonal campaigns.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="label"><span class="emoji">📺</span><span>Internal communication management</span></div>
+          <div class="chev">+</div>
+        </summary>
+        <div class="content">
+          <p>I managed internal digital communication screens (digital signage), transforming everyday information into visually impactful content such as schedules, announcements, indicators and corporate messages.
+</p>
+          <p class="small">Formats: video loops, 16:9 and 9:16 images depending on the screens.</p>
+        </div>
+      </details>
+
+      <details>
+        <summary>
+          <div class="label"><span class="emoji">📰</span><span>Internal newsletter design and editing</span></div>
+          <div class="chev">+</div>
+        </summary>
+        <div class="content">
+          <p>I designed and edited internal newsletters focused on clarity, structure and brand voice, making information easy to navigate and highlighting key messages.</p>
+          <p class="small">Optimization for devices and A/B testing for subject lines and layouts.</p>
+        </div>
+      </details>
+
+        </div>
+        <div class="feature-image">
+          <img src="./images/damelhero.png" alt="Damel work visual" />
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+
+  <!-- GALLERY -->
+  <section class="section">
+      <div class="container" style="max-width:1200px; margin:0 auto;">
+      <div style="text-align:center; ">
+        <div style="display:inline-block; background:var(--card); color:var(--muted); padding:6px 12px; border-radius:999px; font-size:13px;">Visual Highlights</div>
+        <h2>Selected Visuals & Campaigns</h2>
+        <p class="muted" style="max-width:80ch; margin:0 auto; margin-bottom:80px;">
+          A selection of multimedia assets, from motion pieces and social media visuals to influencer kits and brand campaigns.
+        </p>
+      <div style="display:grid; grid-template-columns: repeat(4,1fr); gap:12px; margin-top:18px;">
+        <img style="border-radius: 35% 65% 70% 30% / 40% 45% 55% 60%" src="./images/damel1.png" alt="Work 1" />
+        <img style="border-radius: 35% 65% 60% 40% / 40% 35% 65% 60%" src="./images/damel2.png" alt="Work 2" />
+        <img style="border-radius: 55% 45% 70% 30% / 40% 60% 40% 60%" src="./images/damel3.png" alt="Work 3" />
+        <img style="border-radius: 50% 60% 55% 45% / 55% 45% 60% 50%" src="./images/damel4.png" alt="Work 4" />
+        <img style="border-radius: 60% 40% 35% 65% / 45% 70% 30% 55%" src="./images/damel5.png" alt="Work 5" />
+        <img style="border-radius: 30% 50% 40% 70% / 60% 35% 55% 45%" src="./images/damel6.png" alt="Work 6" />
+        <img style="border-radius: 70% 30% 55% 45% / 35% 60% 40% 65%" src="./images/damel7.png" alt="Work 7" />
+        <img style="border-radius: 65% 35% 50% 70% / 60% 40% 55% 45%" src="./images/damel8.png" alt="Work 8" />
+      </div>
+    </div>
+  </section>
+
+
+
   <!-- CASE PROCESS -->
   <section id="case-process" class="section">
-    <div class="container" style="max-width:1100px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:40px;">
+    <div class="container" style=" margin:0 auto;">
+      <div style="text-align:center; margin-bottom:80px;">
         <div style="display:inline-block; background:var(--card); color:var(--muted); padding:6px 12px; border-radius:999px; font-size:13px; margin-bottom:12px;">Case Overview</div>
         <h2 style="margin:6px 0 8px;">Brand Transformation Through Multimedia Design</h2>
         <p class="muted" style="max-width:84ch; margin:0 auto;">
@@ -82,70 +227,180 @@
         </p>
       </div>
 
-      <div style="display:grid; grid-template-columns:1fr 1fr; gap:30px; align-items:start; margin-top:32px;">
-        <div>
-          <h3 style="margin-bottom:10px;">The Challenge</h3>
-          <p class="muted">
-            The main goal was to rejuvenate the brand and increase visibility across digital platforms. The brand needed to connect with younger audiences through a fresh identity and dynamic communication style.
-          </p>
 
-          <h3 style="margin-top:24px; margin-bottom:10px;">My Role</h3>
-          <p class="muted">
-            As a <strong>Multimedia Designer</strong>, I worked on visual campaigns, internal communication materials, TV ads, and influencer merchandising — always ensuring alignment with the new tone of the brand.
-          </p>
+  <!-- DASHBOARD -->
+
+  <div class="container">
+
+        <div class="dashboard">
+            <!-- Instagram Growth -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-growth">
+                        <i class="fab fa-instagram"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">instagram growth</div>
+                        <div class="widget-subtitle">One-year performance</div>
+                    </div>
+                </div>
+                <div class="big-number">
+                    <div class="big-number-value">233%</div>
+                    <div class="big-number-label">Growth</div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">From</span>
+                    <span class="metric-value">3000 followers</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">To</span>
+                    <span class="metric-value">1000 followers</span>
+                </div>
+            </div>
+
+            <!-- Social Media Campaigns -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-social">
+                        <i class="fas fa-hashtag"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">Social Media</div>
+                        <div class="widget-subtitle">Campañas Digitales</div>
+                    </div>
+                </div>
+                <div class="platforms">
+                    <span class="platform-tag tag-instagram">Instagram</span>
+                    <span class="platform-tag tag-tiktok">TikTok</span>
+                    <span class="platform-tag tag-facebook">Facebook</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Campañas Creadas</span>
+                    <span class="metric-value">12+</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Plataformas</span>
+                    <span class="metric-value">3</span>
+                </div>
+            </div>
+
+            <!-- Motion Graphics & Video -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-video">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">Video & Motion</div>
+                        <div class="widget-subtitle">Contenido Audiovisual</div>
+                    </div>
+                </div>
+                <div class="platforms">
+                    <span class="platform-tag tag-tv">TV</span>
+                    <span class="platform-tag tag-online">Online</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Anuncios Producidos</span>
+                    <span class="metric-value">8+</span>
+                </div>
+            </div>
+
+            <!-- Visual Assets -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-assets">
+                        <i class="fas fa-palette"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">Visual Assets</div>
+                        <div class="widget-subtitle">Diseño y Comunicación</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-file-image"></i>
+                    <span>Material Interno</span>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-bullhorn"></i>
+                    <span>Contenido Marketing</span>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Presentaciones</span>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>Comunicaciones</span>
+                </div>
+            </div>
+
+            <!-- Influencer Kits -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-influencer">
+                        <i class="fas fa-gift"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">Influencer Kits</div>
+                        <div class="widget-subtitle">Marketing de Influencia</div>
+                    </div>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Kits Diseñados</span>
+                    <span class="metric-value">5+</span>
+                </div>
+                <div class="metric">
+                    <span class="metric-label">Merchandise Items</span>
+                    <span class="metric-value">15+</span>
+                </div>
+          
+            </div>
+
+            <!-- Website Updates -->
+            <div class="widget">
+                <div class="widget-header">
+                    <div class="widget-icon icon-web">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <div>
+                        <div class="widget-title">Website Updates</div>
+                        <div class="widget-subtitle">Experiencia Digital</div>
+                    </div>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-paint-brush"></i>
+                    <span>Actualizaciones Visuales</span>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-user-check"></i>
+                    <span>Mejoras UX</span>
+                </div>
+                <div class="list-item">
+                    <i class="fas fa-mobile-alt"></i>
+                    <span>Optimización Mobile</span>
+                </div>
+              
+            </div>
+
+           
         </div>
-
-        <div>
-          <h3 style="margin-bottom:10px;">Key Contributions</h3>
-          <ul class="muted" style="list-style:disc; padding-left:20px;">
-            <li>Designed and produced <strong>social media campaigns</strong> across Instagram, TikTok, and Facebook.</li>
-            <li>Created <strong>motion graphics and video ads</strong> for TV and online platforms.</li>
-            <li>Led the design of <strong>visual assets</strong> for internal communication and marketing.</li>
-            <li>Developed <strong>influencer kits</strong> and promotional merchandise.</li>
-            <li>Collaborated on the <strong>website’s visual updates</strong> and user experience improvements.</li>
-          </ul>
-        </div>
-      </div>
-
-      <div style="margin-top:48px;">
-        <h3>Results</h3>
-        <p class="muted">
-          Through a coherent and engaging visual strategy, Damel achieved a remarkable improvement in its digital visibility.  
-          The brand’s <strong>Instagram audience grew from 3,000 to 10,000 followers</strong> in less than a year — a direct result of consistent design, storytelling, and community engagement.
-        </p>
-      </div>
-
-      <div style="margin-top:40px;">
-        <h3>Learnings & Impact</h3>
-        <p class="muted">
-          This project reinforced my ability to combine <strong>design, storytelling, and strategy</strong> to drive measurable impact. It showed how design can be both creative and data-driven, playing a central role in shaping a brand’s evolution.
-        </p>
-      </div>
     </div>
+
   </section>
 
 
-  <!-- VISUAL GALLERY -->
-  <section id="visual-gallery" class="section" style="background:#f9f9f9;">
-    <div class="container" style="max-width:1200px; margin:0 auto;">
-      <div style="text-align:center; margin-bottom:30px;">
-        <div style="display:inline-block; background:var(--card); color:var(--muted); padding:6px 12px; border-radius:999px; font-size:13px; margin-bottom:12px;">Visual Highlights</div>
-        <h2>Selected Visuals & Campaigns</h2>
-        <p class="muted" style="max-width:80ch; margin:0 auto;">
-          A selection of multimedia assets — from motion pieces and social media visuals to influencer kits and brand campaigns.
-        </p>
-      </div>
-
-      <div class="gallery-grid" style="display:grid; grid-template-columns:repeat(auto-fit, minmax(280px, 1fr)); gap:20px;">
-        <!-- Replace with your own images -->
-        <div class="gallery-item"><img src="./images/palotes main.png" alt="Social media visuals" style="border-radius:12px; box-shadow:var(--shadow);"></div>
-        <div class="gallery-item"><img src="./images/palotes main.png" alt="Video production" style="border-radius:12px; box-shadow:var(--shadow);"></div>
-        <div class="gallery-item"><img src="./images/palotes main.png" alt="Influencer kit design" style="border-radius:12px; box-shadow:var(--shadow);"></div>
-        <div class="gallery-item"><img src="./images/palotes main.png" alt="Internal communication design" style="border-radius:12px; box-shadow:var(--shadow);"></div>
-        <div class="gallery-item"><img src="./images/palotes main.png" alt="TV ad visuals" style="border-radius:12px; box-shadow:var(--shadow);"></div>
+    <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <p>&copy; 2025 Laura Llavador. Todos los derechos reservados.</p>
+      <div class="socials" style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/in/laurallavadorgarcia/" aria-label="LinkedIn"> <i
+            class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.behance.net/laurallavador" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
       </div>
     </div>
-  </section>
+  </footer>
+
 
 </body>
 </html>

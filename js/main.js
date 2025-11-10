@@ -64,3 +64,6 @@ carousel.addEventListener('mousemove', (e) => {
   carousel.scrollLeft = scrollLeft - walk;
 });
 
+
+
+
