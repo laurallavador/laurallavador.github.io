@@ -1324,13 +1324,6 @@ transform: rotate(45deg);
 }
 
 
-@media (max-width: 640px) {
-body {
-padding: 18px;
-}
-}
-
-
 /* DASHBOARD DAMEL*/
         .dashboard {
             display: grid;
