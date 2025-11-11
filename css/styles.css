@@ -26,7 +26,9 @@ html{
 
 html,
 body {
-  height: 100%
+  height: 100%;
+  cursor: url("/laurallavador.github.io/images/cursor.png") 16 16, auto;
+  scroll-behavior: smooth;
 }
 
 body {
@@ -37,8 +39,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   line-height: 1.45;
   font-size: 16px;
-  scroll-behavior: smooth;
-
 }
 
 img {
@@ -78,6 +78,7 @@ a {
 }
 
 .nav {
+  z-index: 1000;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -122,21 +123,15 @@ a {
   font-size: 22px
 }
 
-.close-menu{
-  display: none;
-  background: transparent;
-}
-
-
 /* --- Responsive full-screen menu --- */
-@media (max-width: 768px) {
+@media (max-width: 780px) {
 
   /* Estilo del icono hamburguesa */
   .hamburger {
     position: relative;
     width: 28px;
     height: 22px;
-    display: flex;
+    display: block;
     flex-direction: column;
     justify-content: space-between;
     background: none;
@@ -146,27 +141,21 @@ a {
 
     /* El menú se vuelve vertical */
   .nav-links{
-    flex-direction: column !important;  /* ← esto fuerza la columna */
-    justify-content: center;
-    align-items: center;
-    top: 0;
-    left: 0;
-
-    width: 100vw;
-    height: 100vh; /* ← ESTE ES EL PUNTO CLAVE */
-
-    position: fixed;
-    inset: 0;
-    background: rgba(255,255,255,0.94);
-    backdrop-filter: blur(8px);
-
-    gap: 32px;
-    z-index: 9998;  /* ← por si el header tapa */
+display: flex;
+flex-direction: column;
+gap: 8px;
+position: absolute;
+top: 64px;
+right: 10px;
+padding: 16px 12px;
+background-color: white;
   }
-
-  /* Quitamos el “☰” original */
-  .hamburger::before {
-    content: "";
+  
+  .nav-links.active {
+    display: flex;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: 12px;
   }
 
   /* Las 3 líneas */
@@ -177,26 +166,7 @@ a {
     border-radius: 2px;
     transition: transform .3s ease, opacity .3s ease;
   }
-
-  
-
-    .close-menu {
-    position: absolute;
-    top: 24px;
-    right: 24px;
-    background: none;
-    border: none;
-    font-size: 32px;
-    cursor: pointer;
-    z-index: 9999;
-    color: #0f172a;
-  }
 }
-
-
-
-
-
 
 
 
@@ -254,10 +224,18 @@ background: var(--accent-3);
   font-size: clamp(0.95rem, 1.6vw, 1.05rem);
 }
 
+.smalltext{
+  font-weight:500;
+  color:var(--muted);
+  font-size:18px; 
+  letter-spacing:0.3rem;
+}
+
 .cta-row {
   display: flex;
   gap: 14px;
-  align-items: center
+  align-items: center;
+  justify-content: left;
 }
 
 .btn-primary {
@@ -619,9 +597,9 @@ section.section {
   color: #fff;
 }
 
-.project-title {
+.project-title{
   font-size: 1.5rem;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 .muted {
@@ -692,7 +670,6 @@ section.section {
 
 
 .skills-marquee {
-  overflow: hidden;
   white-space: nowrap;
   border-radius: 12px;
   padding: 12px;
@@ -707,22 +684,24 @@ section.section {
   list-style: none;
   padding: 0;
   margin: 0;
-  animation: marquee 14s linear infinite
+  white-space: nowrap;
+  animation: marquee 14s linear infinite;
+  animation-delay: -10s;
 }
 
 .skills-list li{
   font-weight: 500;
-  font-size: 24px;
+  font-size: 50px;
   color: #333;
 }
 
 /* Ícono entre cada <li> */
 .skills-list li::after {
-  content: "☾☼"; /* o usa un ícono Font Awesome si prefieres */
+  content: "☾☼"; 
   margin-left: 1rem;
 }
 
- /* Scoped styles para la sección skills */
+ /* Scoped styles para la sección skills NEXTPORT */
         #skills .skills-grid {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
@@ -897,10 +876,31 @@ section.section {
     grid-column: span 2
   }
 
-  .mockup-card {
-    transform: none;
-    max-width: 300px;
-    margin: 0 auto;
+
+  .smalltext{
+  font-weight:500;
+  color:var(--muted);
+  font-size:18px; 
+  letter-spacing:0.3rem;
+}
+
+  .mockup-card{
+    width: 50%;
+    height: 50%;
+  }
+  .hero-mockup-reveal{
+    width: 50%;
+    height: 50%;
+
+  }
+
+.hero-copy h1{
+  font-size: 50px;
+}
+  .hero-mockup .floating-doodle{
+    width: 60px;
+    left: 20px;
+    top: 10px;
   }
 }
 
@@ -918,11 +918,26 @@ section.section {
   }
 
   .hero-copy h1 {
-    font-size: 28px;
+    font-size: 40px;
     margin-bottom: 18px;
   }
   .hero-mockup {
-    display: none
+   align-items: center;
+    justify-content: center;
+  }
+  .mockup-card{
+    width: 50%;
+    height: 50%;
+  }
+  .hero-mockup-reveal{
+    width: 50%;
+    height: 50%;
+
+  }
+  .hero-mockup .floating-doodle{
+    width: 60px;
+    left: 20px;
+    top: 10px;
   }
 
   /* small screens: tighten hero spacing and stack CTAs */
@@ -931,7 +946,7 @@ section.section {
     padding-bottom: 2rem;
   }
   .hero-copy { max-width: 56ch; }
-  .cta-row { flex-direction: column; gap: 12px; }
+  .cta-row {  gap: 12px; }
 }
 
 /* Interactive touches */
@@ -1205,8 +1220,8 @@ button:focus {
 }
 
 .feature-image img {
-  width: 100%;
-  height: 100%;
+  width: 34rem;
+  height: 19rem;
   max-height: 420px;
   object-fit: contain;
   border-radius: 12px;
@@ -1231,6 +1246,29 @@ button:focus {
 @media (max-width: 600px) {
   .feature-image img { max-height: 240px; border-radius: 8px; }
   .feature-image { width: 100%; }
+}
+
+
+/* Contact */
+.info{
+  text-align: center;
+  padding: 12px;
+  font-size: 4rem;
+}
+
+.icon{
+  font-size: 4rem;
+  color:#7b61ff;
+}
+
+@media (max-width: 900px) {
+  .info { font-size: 2.5rem; }
+  .icon{ font-size: 2.5rem; }
+}
+
+@media (max-width: 600px) {
+  .info{ font-size: 1.5rem; }
+  .icon{ font-size: 1.5rem; }
 }
 
 

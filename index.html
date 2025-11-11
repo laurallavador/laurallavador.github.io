@@ -28,13 +28,11 @@
           <img src="./images/logo.svg" alt="Laura Llavador logo" />
         </a>
 
-        <button class="hamburger" id="hamburger" aria-expanded="false" aria-controls="nav-links">☰</button>
+        <button class="hamburger" id="hamburger" aria-label="nav-links">☰</button>
 
         <ul class="nav-links" id="nav-links">
-          <button class="close-menu" id="close-menu" aria-label="Cerrar menú">✕</button>
-
           <li><a href="#about">About</a></li>
-          <li><a href="#projects">Work</a></li>
+          <li><a href="work.html">Work</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
           <div class="socials" style="display:flex;gap:16px">
@@ -50,7 +48,7 @@
   <section class="hero">
     <div class="container hero-inner">
       <div class="hero-copy">
-        <small style="font-weight:500;color:var(--muted);font-size:18px; letter-spacing:0.3rem;">PRODUCT UI/UI DESIGNER & MULTIMEDIA</small>
+        <small class="smalltext">PRODUCT UI/UI DESIGNER & MULTIMEDIA</small>
         <span class="intro-text" style=" margin-bottom:10px; margin-top: 30px;">Where creativity meets usability</span>
         <h1 class="reveal" style="margin-bottom: 60px;">
           Hi, I'm <span class="main-title">Laura Llavador</span><br>
@@ -114,7 +112,7 @@
     <div class="container">
       <div class="projects-header reveal">
         <h2>Featured Work <span class="arrow-down">↓</span></h2>
-        <a class="all-work-link" href="work.html">ALL WORK →</a>
+        <a href="work.html" class="btn-secondary">ALL WORK →</a>
       </div>
 
      <!-- Featured project (wide) -->
@@ -196,7 +194,6 @@
       <div class="skills-marquee reveal" aria-hidden="false">
         <ul class="skills-list">
           <li>Figma</li>
-          <li>Adobe XD</li>
           <li>Illustrator</li>
           <li>Photoshop</li>
           <li>HTML / CSS / JS</li>
@@ -207,7 +204,25 @@
         </ul>
         <ul class="skills-list" aria-hidden="true">
           <li>Figma</li>
-          <li>Adobe XD</li>
+          <li>Illustrator</li>
+          <li>Photoshop</li>
+          <li>HTML / CSS / JS</li>
+          <li>Design Systems</li>
+          <li>Prototyping</li>
+          <li>User Research</li>
+          <li>Wireframing</li>
+        </ul><ul class="skills-list">
+          <li>Figma</li>
+          <li>Illustrator</li>
+          <li>Photoshop</li>
+          <li>HTML / CSS / JS</li>
+          <li>Design Systems</li>
+          <li>Prototyping</li>
+          <li>User Research</li>
+          <li>Wireframing</li>
+        </ul>
+        <ul class="skills-list" aria-hidden="true">
+          <li>Figma</li>
           <li>Illustrator</li>
           <li>Photoshop</li>
           <li>HTML / CSS / JS</li>
@@ -223,9 +238,15 @@
   <!-- CONTACT -->
   <section id="contact" class="contact section">
     <div class="container reveal">
-      <h2>Contact</h2>
-      <p class="muted">LET'S CONNECT!</p>
-      <a href="laurallavador1997@gmail.com" class="btn-primary" style="margin-top:12px">Click here to connect</a>
+      <h2 style="font-size: 2rem; font-weight: 500;">Contact <span class="arrow-down">↓</span></h2>
+      <p class="muted" style="font-size: 3rem; margin-top: 1rem;">LET'S CONNECT!</p>
+      <div class="contact-item">
+      <span class="icon"><i class="fa-solid fa-regular fa-envelope"></i></span>
+      <span class="info">lauxllavador@gmail.com</span>
+    </div>
+    <div class="contact-item">
+      <span class="icon"><i class="fa-solid fa-globe"></i></span>
+      <span class="info">Valencia, Spain</span>
     </div>
   </section>
 

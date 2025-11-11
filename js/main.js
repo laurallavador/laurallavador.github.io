@@ -1,23 +1,68 @@
 (function(){
   const hamburger = document.getElementById('hamburger');
   const navLinks = document.getElementById('nav-links');
-  const closeMenu = document.getElementById('close-menu');
 
-  // Cerrar al hacer click en la X
-  closeMenu && closeMenu.addEventListener('click', () => {
-    navLinks.classList.remove('active');
-    hamburger.setAttribute('aria-expanded', 'false');
-    hamburger.classList.remove('active');
-  });
 
-  // Hamburger toggle
-  hamburger && hamburger.addEventListener('click', ()=> {
-    const expanded = hamburger.getAttribute('aria-expanded') === 'true';
-    hamburger.setAttribute('aria-expanded', String(!expanded));
+ window.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');s
+    const navLinks = document.querySelector('.nav-links');
+    if (hamburger && navLinks) {
+        hamburger.onclick = function(e) {
+            e.stopPropagation();
+            navLinks.classList.toggle('active');
+        };
+        // Cerrar el menú si se hace clic fuera
+        document.addEventListener('click', function(event) {
+            if (!navLinks.contains(event.target) && !hamburger.contains(event.target)) {
+                navLinks.classList.remove('active');
+            }
+        });
+    }
 
-    navLinks.classList.toggle('active');
-    hamburger.classList.toggle('active');
-  });
+    // Smooth scroll for navigation links with offset
+    document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', function (e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                const navbarHeight = document.querySelector('.nav').offsetHeight; // Altura de la barra de navegación
+                const sectionPosition = targetSection.offsetTop; // Posición de la sección
+                const scrollPosition = sectionPosition - navbarHeight - 10; // Ajuste con margen de 10px
+
+                window.scrollTo({
+                    top: scrollPosition,
+                    behavior: 'smooth',
+                });
+
+  // Cerrar el menú después de hacer clic en un enlace
+                navLinks.classList.remove('active');
+            }
+        });
+    });
+
+    // Button scroll to top
+    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+    window.addEventListener('scroll', () => {
+        if (window.scrollY > 200) {
+            scrollToTopBtn.style.display = 'block';
+        } else {
+            scrollToTopBtn.style.display = 'none';
+        }
+    });
+    scrollToTopBtn.addEventListener('click', () => {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // Hacer que el título de la barra de navegación lleve arriba
+    const navbarTitle = document.querySelector('.navbar-title');
+    if (navbarTitle) {
+        navbarTitle.style.cursor = 'pointer';
+        navbarTitle.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+});
 
   // Música
   const music = document.getElementById("bg-music");
@@ -28,6 +73,13 @@
       music.play();
     });
   }
+
+const cursor = document.querySelector(".cursor");
+
+document.addEventListener("mousemove", (e) => {
+  cursor.style.top = e.clientY + "px";
+  cursor.style.left = e.clientX + "px";
+});
 
   // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
@@ -93,3 +145,5 @@ if (carousel) {
     carousel.scrollLeft = scrollLeft - walk;
   });
 }
+
+
