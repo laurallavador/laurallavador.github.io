@@ -21,10 +21,10 @@
 
   // Música
   const music = document.getElementById("bg-music");
-  const firstLoader = document.querySelector(".loader");
+  const loader = document.querySelector(".loader");
 
-  if (music && firstLoader) {
-    firstLoader.addEventListener("click", () => {
+  if (music && loader) {
+   loader.addEventListener("click", () => {
       music.play();
     });
   }
