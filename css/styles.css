@@ -31,7 +31,7 @@ body {
 
 body {
   margin: 0;
-      background-color: #f5f5f5; /* blanco de fondo */
+      background-color: #f8f4ee; /* beige de fondo */
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -122,12 +122,84 @@ a {
   font-size: 22px
 }
 
-.pill{
-  background-color: #2B5B6C;
-  color: white;
-  padding: 2px 12px;
-  border-radius: 8px;
+.close-menu{
+  display: none;
+  background: transparent;
 }
+
+
+/* --- Responsive full-screen menu --- */
+@media (max-width: 768px) {
+
+  /* Estilo del icono hamburguesa */
+  .hamburger {
+    position: relative;
+    width: 28px;
+    height: 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+    /* El menú se vuelve vertical */
+  .nav-links{
+    flex-direction: column !important;  /* ← esto fuerza la columna */
+    justify-content: center;
+    align-items: center;
+    top: 0;
+    left: 0;
+
+    width: 100vw;
+    height: 100vh; /* ← ESTE ES EL PUNTO CLAVE */
+
+    position: fixed;
+    inset: 0;
+    background: rgba(255,255,255,0.94);
+    backdrop-filter: blur(8px);
+
+    gap: 32px;
+    z-index: 9998;  /* ← por si el header tapa */
+  }
+
+  /* Quitamos el “☰” original */
+  .hamburger::before {
+    content: "";
+  }
+
+  /* Las 3 líneas */
+  .hamburger span {
+    display: block;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 2px;
+    transition: transform .3s ease, opacity .3s ease;
+  }
+
+  
+
+    .close-menu {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: none;
+    border: none;
+    font-size: 32px;
+    cursor: pointer;
+    z-index: 9999;
+    color: #0f172a;
+  }
+}
+
+
+
+
+
+
+
+
 
 /* Hero */
 .hero {
@@ -254,32 +326,32 @@ background: var(--accent-3);
   transform: rotate(-10deg)
 }
 
-/* Blobs */
+.pill{
+  background-color: #2B5B6C;
+  color: white;
+  padding: 2px 12px;
+  border-radius: 8px;
+}
+
+/* Blobs 
 .blob {
   position: absolute;
   border-radius: 48% 52% 60% 40%;
   opacity: 0.14;
-  filter: blur(28px);
+  filter: blur(40px);
   z-index: 0
 }
 
-.blob.a {
-  right: -6vw;
-  top: -6vw;
-  width: min(420px, 40vw);
-  height: auto;
-  background: linear-gradient(135deg, var(--accent-3), #ff9fb2);
-}
-
 .blob.b {
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
   left: 18vw ;
   right: 620vw;
-  background: linear-gradient(135deg, var(--accent-3), #466b6c);
+  background: linear-gradient(135deg ,#849E00 );
   left: -120px;
-  bottom: -100px
+  bottom: -500px
 }
+  */
 
 
 /* Spotify */
@@ -450,8 +522,8 @@ section.section {
 /* Projects */
 .projects {
   padding: 4rem 2rem;
-  background: #fafafa;
-  background-image: radial-gradient(#e5e5e5 0.6px, transparent 0.6px);
+  background: #f8f4ee;
+  background-image: radial-gradient(#7676763e 0.6px, transparent 0.6px);
   background-size: 16px 16px; /* distancia entre los puntos */
 }
 
@@ -837,10 +909,6 @@ section.section {
     display: none
   }
 
-  .hamburger {
-    display: block
-  }
-
   .project-grid {
     grid-template-columns: 1fr
   }
@@ -975,11 +1043,6 @@ button:focus {
   max-width: 500px;
   box-shadow: 0 3px 6px rgba(213, 213, 213, 0.723);
   transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.process-card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 8px 20px rgba(0,0,0,0.35);
 }
 
 .card-image {
@@ -1158,6 +1221,7 @@ button:focus {
   justify-content: center;
   overflow: hidden;
   border-radius: 12px;
+  box-shadow: 0 3px 8px rgba(2, 6, 23, 0.11);
 }
 
 @media (max-width: 900px) {
@@ -1337,15 +1401,17 @@ transform: rotate(45deg);
             background: white;
             border-radius: 20px;
             padding: 30px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            box-shadow: 0 3px 8px rgba(2, 6, 23, 0.11);
             transition: transform 0.3s ease, box-shadow 0.3s ease;
             animation: slideUp 0.6s ease-out;
         }
 
+/* HOVER CON MOVIMIENTO DASHBOARD
         .widget:hover {
             transform: translateY(-10px);
             box-shadow: 0 15px 40px rgba(0,0,0,0.3);
         }
+            */
 
         .widget-header {
             display: flex;
