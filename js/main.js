@@ -4,7 +4,7 @@
 
 
  window.addEventListener('DOMContentLoaded', () => {
-    const hamburger = document.querySelector('.hamburger');s
+    const hamburger = document.querySelector('.hamburger');
     const navLinks = document.querySelector('.nav-links');
     if (hamburger && navLinks) {
         hamburger.onclick = function(e) {
