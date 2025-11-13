@@ -475,27 +475,153 @@ section.section {
   margin: 0 0 18px¡;
 }
 
-/* About */
+
+
+/* ABOUT */
 .about-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 28px;
+  gap: 40px;
   align-items: start;
-  background: #849e001a; 
-  padding: 60px;
-  border-radius: 8px;
+  padding: 60px 0;
+}
+
+.about-lead {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
 
 .about-lead .h2left {
-  font-size: 28px;
+  font-size: clamp(40px, 5vw, 64px);
   margin: 0;
-  color: var(--accent-3);
-  font-weight: 500
+  color: #7b61ff;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
 }
 
-.about-body p {
-  color: #5d5d5d ;
+.about-lead .muted {
+  color: #272727;
+  font-size: 16px;
+  margin: 0;
 }
+
+.about-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.about-card {
+  background: white;
+  border-radius: 16px;
+  padding: 32px;
+  box-shadow: 0 10px 40px #7b61ff1a;
+  position: relative;
+  overflow: hidden;
+}
+
+.about-card::before {
+  content: '';
+  position: absolute;
+  top: -50px;
+  right: -50px;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(155, 109, 214, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.about-card::after {
+  content: '';
+  position: absolute;
+  bottom: -30px;
+  right: 20px;
+  width: 100px;
+  height: 100px;
+  background: radial-gradient(circle, rgba(78, 205, 196, 0.2) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.card-icon {
+  font-size: 20px;
+}
+
+.card-title {
+  color: #7b61ff;
+  font-weight: 600;
+  font-size:32px;
+}
+
+.card-body {
+  position: relative;
+  z-index: 1;
+}
+
+.card-body p {
+  color: #5d5d5d;
+  line-height: 1.7;
+  margin-bottom: 16px;
+  font-size: 15px;
+}
+
+.card-body p:last-child {
+  margin-bottom: 0;
+}
+
+.highlight {
+  font-weight: 600;
+  padding: 2px 0;
+  position: relative;
+}
+
+.highlight-purple {
+  color: #849E00;
+}
+
+.highlight-cyan {
+  color: #849E00;
+}
+
+.highlight-coral {
+  color: #849E00;
+}
+
+.card-body strong {
+  color: #2d2d2d;
+  font-weight: 600;
+}
+
+/* Responsive */
+@media (max-width: 968px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+    padding: 40px 0;
+  }
+  
+  .about-lead .h2left {
+    font-size: 40px;
+  }
+  
+  .about-card {
+    padding: 24px;
+  }
+}
+
+
+
 
 /* Projects */
 .projects {
@@ -1604,4 +1730,12 @@ transform: rotate(45deg);
         @media (max-width: 768px) {
             .header h1 { font-size: 1.8rem; }
             .dashboard { grid-template-columns: 1fr; }
+            .damelpics { 
+            grid-template-columns: repeat(2,1fr)!important}
         }
+
+           @media (max-width: 600px) {
+            .damelpics { 
+            grid-template-columns: repeat(1,1fr)!important}
+        }
+
