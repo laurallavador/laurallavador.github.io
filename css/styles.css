@@ -78,7 +78,7 @@ a {
 }
 
 .nav {
-  z-index: 1000;
+  z-index: 9999;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -269,7 +269,7 @@ background: var(--accent-3);
 
 .hero-mockup {
   position: relative;
-  padding: 30px;
+  padding: 8px;
   border-radius: 22px;
   background: linear-gradient(180deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.3));
   box-shadow: var(--shadow);
@@ -310,26 +310,6 @@ background: var(--accent-3);
   padding: 2px 12px;
   border-radius: 8px;
 }
-
-/* Blobs 
-.blob {
-  position: absolute;
-  border-radius: 48% 52% 60% 40%;
-  opacity: 0.14;
-  filter: blur(40px);
-  z-index: 0
-}
-
-.blob.b {
-  width: 400px;
-  height: 400px;
-  left: 18vw ;
-  right: 620vw;
-  background: linear-gradient(135deg ,#849E00 );
-  left: -120px;
-  bottom: -500px
-}
-  */
 
 
 /* Spotify */
@@ -484,6 +464,7 @@ section.section {
   gap: 40px;
   align-items: center;
   padding: 60px 0;
+  
 }
 
 .about-lead {
@@ -804,6 +785,7 @@ section.section {
   background: transparent;
   display: flex;
   gap: 16px;
+  mask-image: linear-gradient(to right, transparent, black 20%, black 80%, transparent)
 }
 
 .skills-list {
@@ -1353,7 +1335,6 @@ button:focus {
   max-height: 420px;
   object-fit: contain;
   border-radius: 12px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
   display: block;
 }
 
@@ -1364,7 +1345,6 @@ button:focus {
   justify-content: center;
   overflow: hidden;
   border-radius: 12px;
-  box-shadow: 0 3px 8px rgba(2, 6, 23, 0.11);
 }
 
 @media (max-width: 900px) {
@@ -1740,3 +1720,4 @@ transform: rotate(45deg);
             grid-template-columns: repeat(1,1fr)!important}
         }
 
+  
