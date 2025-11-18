@@ -59,6 +59,17 @@ a {
   padding: 0 0 0px;
 }
 
+.container-screen{
+ display: grid; 
+grid-template-columns: repeat(5, 1fr);
+ gap: 24px; 
+}
+
+.container-screen img{
+width: 200px;
+}
+
+
 /* Header */
 .header {
   position: sticky;
@@ -142,6 +153,11 @@ a {
   .container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));;
+  }
+
+   .container-screen{
+    display: grid;
+grid-template-columns: repeat(2, 5fr);
   }
 
     /* El menú se vuelve vertical */
@@ -533,6 +549,12 @@ section.section {
   }
   .hero-meta > div { min-width: 0; width: 100%; }
   .hero-meta p { font-size: 0.95rem; }
+  .mainpage{
+  display: block;
+  margin: 0 auto;
+  max-width: 70%;
+  height: auto;
+  }
 }
 
 
@@ -573,7 +595,7 @@ section.section {
   bottom: -4px;
   height: 6px;
   width: 75%;
-  background: #01E4B9;
+  background: #41917F;
   border-radius: 4px;
 }
 
@@ -601,12 +623,13 @@ section.section {
 
 /* Icono dentro del li (si usas <img>) */
 .category li img{
-  width: 32px;
-  height: 32px;
+  width: 24px;
+  height: 24px;
   object-fit: contain;
   flex-shrink: 0;
   filter: none; /* si necesitas aplicar color puedes usar filter o remplazar por SVG inline */
 }
+
 
 /* Si prefieres un icono circular detrás (opcional) */
 .category li .icon-wrap{
@@ -617,6 +640,7 @@ section.section {
   justify-content: center;
   border-radius: 10px;
   background: rgba(52,216,201,0.06);
+
 }
 
 /* Texto del item */
