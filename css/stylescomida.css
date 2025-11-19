@@ -348,10 +348,23 @@ background-color: white;
 @media (min-width: 1000px) {
   .cardsort-grid { grid-template-columns: repeat(5, 1fr); }
   .cardsort-item { min-height: 64px; padding: 20px 24px; }
+  .cardsort-section .section-icon{
+  width: 32px;
+  height: 32px;
+justify-self: center;
+align-items: center;
+}
 }
 
 @media (max-width: 420px) {
-  .cardsort-item { padding: 12px 14px; font-size: 0.95rem; }
+  .cardsort-item { padding: 12px 14px; font-size: 0.95rem; 
+  }
+  .cardsort-section .section-icon{
+  width: 32px;
+  height: 32px;
+justify-self: center;
+align-items: center;
+}
 }
 
 /* Section header with icon above the heading */
