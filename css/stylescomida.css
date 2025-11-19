@@ -59,16 +59,93 @@ a {
   padding: 0 0 0px;
 }
 
-.container-screen{
- display: grid; 
-grid-template-columns: repeat(5, 1fr);
- gap: 24px; 
-}
 
 .container-screen img{
-width: 200px;
+  width: 100%;
+  height: auto;
+  display: block;
+  scroll-snap-align: center;
 }
 
+/* --- Carousel --- */
+.container-screen {
+  display: flex;
+  overflow-x: auto;
+  gap: 2rem;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none; /* Firefox */
+}
+
+.container-screen::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+/* Carousel wrapper controls */
+.carousel-wrap {
+  position: relative;
+  width: 100%;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.carousel-btn {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 20;
+  background: rgba(255,255,255,0.9);
+  border: 0;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  box-shadow: 0 6px 18px rgba(15,23,42,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.carousel-prev { left: 8px; }
+.carousel-next { right: 8px; }
+
+/* Hide controls on very small screens if desired (still usable) */
+@media (max-width: 420px){
+  .carousel-btn{ width:36px; height:36px; font-size:18px; }
+}
+
+/* -----------------------------
+   Carousel responsive rules
+   Consolidated so all .container-screen
+   related styles live together
+   ----------------------------- */
+@media (max-width: 780px) {
+  .container-screen {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 16px;
+    padding-bottom: 10px;
+  }
+
+  .container-screen > * {
+    flex: 0 0 80%;
+    max-width: 80%;
+    scroll-snap-align: center;
+  }
+
+  .container-screen img{
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+}
+
+@media (max-width: 600px) {
+  /* small-screen adjustments for other components (container etc.)
+     carousel rules have been consolidated earlier */
+}
 
 /* Header */
 .header {
@@ -150,15 +227,52 @@ width: 200px;
     padding: 0;
   }
 
+  /* hamburger/menu styles remain here */
+}
+
+/* Desktop: grid layout (2 filas x 5 columnas) */
+@media (min-width: 700px) {
+  .container-screen {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-auto-rows: auto;
+    gap: 24px;
+    overflow: visible; /* desactivar scroll horizontal en desktop */
+    scroll-snap-type: none;
+  
+  }
+
+    .carousel-prev { 
+     display: none;}
+    .carousel-next { 
+      display: none;
+     }
+
+  /* Asegura que las imágenes llenen la celda */
+  .container-screen img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+  }
+}
+
+@media (max-width: 600px) {
+  .container-screen > * {
+    flex: 0 0 90%;
+    max-width: 90%;
+  }
+
+  .container-screen img{
+    width: 100%;
+    height: auto;
+  }
+
   .container{
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));;
   }
 
-   .container-screen{
-    display: grid;
-grid-template-columns: repeat(2, 5fr);
-  }
+ 
 
     /* El menú se vuelve vertical */
   .nav-links{
@@ -187,6 +301,77 @@ background-color: white;
     border-radius: 2px;
     transition: transform .3s ease, opacity .3s ease;
   }
+}
+
+/* Card-sorting / tag-style cards */
+.cardsort-section { padding-top: 40px; }
+.cardsort-section .container { max-width: var(--max-w); }
+.cardsort-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 20px;
+  justify-items: center;
+  align-items: center;
+  padding: 8px 12px;
+}
+.cardsort-item {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 22px;
+  box-shadow: 0 18px 40px rgba(16,22,26,0.06);
+  border: 1px solid rgba(15,23,42,0.03);
+  min-height: 56px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  font-weight: 600;
+  color: #2d3748;
+  cursor: pointer;
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+.cardsort-item:hover,
+.cardsort-item:focus {
+  transform: translateY(-6px);
+  box-shadow: 0 26px 60px rgba(16,22,26,0.12);
+  outline: none;
+}
+
+/* Selected state */
+.cardsort-item.selected {
+  background: linear-gradient(180deg, #fffefc, #f8fbff);
+  border-color: rgba(123,97,255,0.14);
+  box-shadow: 0 30px 70px rgba(61,50,120,0.08);
+  transform: translateY(-8px) scale(1.02);
+}
+
+@media (min-width: 1000px) {
+  .cardsort-grid { grid-template-columns: repeat(5, 1fr); }
+  .cardsort-item { min-height: 64px; padding: 20px 24px; }
+}
+
+@media (max-width: 420px) {
+  .cardsort-item { padding: 12px 14px; font-size: 0.95rem; }
+}
+
+/* Section header with icon above the heading */
+.cardsort-section .section-heading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  text-align: center;
+}
+.cardsort-section .section-icon{
+  width: 32px;
+  height: 32px;
+justify-self: center;
+align-items: center;
+}
+.cardsort-section .section-title{
+  margin: 0;
+  color: #11151e;
 }
 
 
@@ -667,6 +852,8 @@ section.section {
 @media (max-width: 650px){
   .process-section {
     grid-template-columns: 2fr!important;
+    align-items: center;
+    justify-content: center;
     padding: 36px 18px;
     gap: 30px;
   }

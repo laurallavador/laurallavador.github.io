@@ -122,7 +122,7 @@ document.addEventListener("mousemove", (e) => {
 
 // Carousel (con seguridad)
 const carousel = document.querySelector('.projects-carousel');
-
+console.log(carousel);
 if (carousel) {
   let isDown = false;
   let startX;
@@ -146,5 +146,135 @@ if (carousel) {
     carousel.scrollLeft = scrollLeft - walk;
   });
 }
+  
+  // Additional carousel control script can be appended here
+  
+// Controls for `.container-screen` carousel: buttons, keyboard, snap-to-item
+document.addEventListener('DOMContentLoaded', function () {
+  const cs = document.querySelector('.container-screen');
+  const prevBtn = document.querySelector('.carousel-prev');
+  const nextBtn = document.querySelector('.carousel-next');
+
+  if (!cs || !prevBtn || !nextBtn) return;
+
+  const items = Array.from(cs.children);
+  let current = 0;
+
+  function scrollToIndex(i) {
+    i = Math.max(0, Math.min(items.length - 1, i));
+    const el = items[i];
+    // Center the element in the visible area
+    const left = el.offsetLeft - (cs.clientWidth - el.clientWidth) / 2;
+    cs.scrollTo({ left, behavior: 'smooth' });
+    current = i;
+  }
+
+  // Initialize current index to the nearest visible item
+  function updateCurrentByScroll() {
+    const center = cs.scrollLeft + cs.clientWidth / 2;
+    const idx = items.findIndex(item => (item.offsetLeft + item.clientWidth / 2) >= center);
+    current = idx === -1 ? items.length - 1 : idx;
+  }
+
+  // Buttons
+  prevBtn.addEventListener('click', () => scrollToIndex(current - 1));
+  nextBtn.addEventListener('click', () => scrollToIndex(current + 1));
+
+  // Update current while scrolling (debounced)
+  let t;
+  cs.addEventListener('scroll', () => {
+    clearTimeout(t);
+    t = setTimeout(updateCurrentByScroll, 80);
+  });
+
+  // Keyboard navigation
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'ArrowLeft') prevBtn.click();
+    if (e.key === 'ArrowRight') nextBtn.click();
+  });
+
+  // Make container focusable for accessibility
+  cs.tabIndex = 0;
+});
+
+// Card-sorting: drag & drop + selectable state
+document.addEventListener('DOMContentLoaded', function () {
+  const grid = document.querySelector('.cardsort-grid');
+  if (!grid) return;
+
+  // Restore order from localStorage if available
+  const storageKey = 'cardsort-order';
+  const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
+  if (saved && Array.isArray(saved) && saved.length) {
+    // reorder DOM according to saved text content
+    const map = Array.from(grid.children).reduce((m, el) => (m.set(el.textContent.trim(), el), m), new Map());
+    saved.forEach(key => {
+      const el = map.get(key);
+      if (el) grid.appendChild(el);
+    });
+  }
+
+  function saveOrder() {
+    const order = Array.from(grid.children).map(el => el.textContent.trim());
+    localStorage.setItem(storageKey, JSON.stringify(order));
+  }
+
+  function getDragAfterElement(container, x, y) {
+    const draggableElements = [...container.querySelectorAll('.cardsort-item:not(.dragging)')];
+    if (!draggableElements.length) return null;
+    // find the element whose center is nearest to pointer
+    let closest = {offset: Infinity, element: null};
+    draggableElements.forEach(child => {
+      const box = child.getBoundingClientRect();
+      const cx = box.left + box.width / 2;
+      const cy = box.top + box.height / 2;
+      const offset = Math.hypot(x - cx, y - cy);
+      if (offset < closest.offset) closest = {offset, element: child};
+    });
+    return closest.element;
+  }
+
+  // Make items draggable and selectable
+  const items = Array.from(grid.querySelectorAll('.cardsort-item'));
+  items.forEach(item => {
+    item.setAttribute('draggable', 'true');
+    item.setAttribute('aria-pressed', 'false');
+
+    // toggle selected on click or keyboard
+    item.addEventListener('click', (e) => {
+      item.classList.toggle('selected');
+      item.setAttribute('aria-pressed', item.classList.contains('selected'));
+    });
+    item.addEventListener('keydown', (e) => {
+      if (e.key === ' ' || e.key === 'Enter') {
+        e.preventDefault();
+        item.click();
+      }
+    });
+
+    item.addEventListener('dragstart', (e) => {
+      item.classList.add('dragging');
+      try { e.dataTransfer.setData('text/plain', item.textContent.trim()); } catch (err) {}
+      e.dataTransfer.effectAllowed = 'move';
+    });
+    item.addEventListener('dragend', () => {
+      item.classList.remove('dragging');
+      saveOrder();
+    });
+  });
+
+  grid.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    const dragging = grid.querySelector('.dragging');
+    if (!dragging) return;
+    const after = getDragAfterElement(grid, e.clientX, e.clientY);
+    if (!after) grid.appendChild(dragging);
+    else grid.insertBefore(dragging, after);
+  });
+
+  // Touch support: enable long-press to start drag on touch devices is complex
+  // We'll rely on native drag on supported touch browsers; optionally add a fallback later.
+});
+  
 
 
