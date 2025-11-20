@@ -142,12 +142,6 @@ a {
   }
 }
 
-@media (max-width: 600px) {
-  /* small-screen adjustments for other components (container etc.)
-     carousel rules have been consolidated earlier */
-}
-
-/* Header */
 
 /* -----------------------------
    Diseño: Proceso (CompressFlow)
@@ -1107,20 +1101,6 @@ section.section {
             from { opacity: 0; transform: translateY(30px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        @media (max-width: 768px) {
-            .header h1 { font-size: 1.8rem; }
-            .dashboard { grid-template-columns: 1fr; }
-            .damelpics { 
-            grid-template-columns: repeat(2,1fr)!important}
-        }
-
-           @media (max-width: 600px) {
-            .damelpics { 
-            grid-template-columns: repeat(1,1fr)!important}
-        }
-
-
 
 
 
