@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Ver PDF</title>
+  <style>
+    html, body {
+      height: 100%;
+      margin: 0;
+    }
+    /* Contenedor que ocupa toda la ventana */
+    .pdf-viewer {
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Usar embed (funciona en la mayoría de navegadores) -->
+  <embed src="/images/LauraLlavadorCV.pdf" type="application/pdf" class="pdf-viewer">
+  <!-- Fallback sencillo si no se carga el PDF: enlace directo -->
+  <noscript>
+    <p>Si el PDF no se muestra automáticamente, <a href="mi-archivo.pdf" target="_blank" rel="noopener">ábrelo aquí</a>.</p>
+  </noscript>
+</body>
+</html>
