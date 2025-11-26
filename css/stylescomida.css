@@ -33,7 +33,7 @@ body {
 
 body {
   margin: 0;
-      background-color: #F2F2F2; /* beige de fondo */
+      background-color: #ffffff; /* beige de fondo */
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -136,7 +136,7 @@ a {
   }
 
   .container-screen img{
-    width: 100%;
+    max-width: 70%!important;
     height: auto;
     display: block;
   }
@@ -923,26 +923,52 @@ section.section {
   }
 }
 
-/*Figma container*/
-@media (max-width: 480px){
+/* Figma container: mobile video fallback */
+/* General container */
 .figma-container {
   position: relative;
   width: 100%;
-  padding-bottom: 60%; /* Ajusta la proporción según tu prototipo */
-  height: 0;
-  overflow: hidden;
+  height: 100vh;
 }
 
-.figma-container iframe {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Desktop/tablet: show iframe */
+.figma-embed {
   width: 100%;
   height: 100%;
-  border: 0;
+  border: none;
 }
 
+/* Desktop/tablet: hide video */
+.figma-video {
+  display: none;
 }
+
+/* Mobile: max 480px */
+@media (max-width: 600px) {
+
+  .figma-container {
+    width: 100vw;
+    padding-bottom: 60%; /* Ajusta el aspecto del video */
+    height: 0;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .figma-embed {
+    display: none;
+  }
+
+  .figma-video {
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}
+
 
 
 

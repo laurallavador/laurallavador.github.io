@@ -33,7 +33,7 @@ body {
 
 body {
   margin: 0;
-      background-color: #f8f4ee; /* beige de fondo */
+      background-color: #ffffff; /* beige de fondo */
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -656,9 +656,9 @@ section.section {
 /* Projects */
 .projects {
   padding: 4rem 2rem;
-  background: #f8f4ee;
+  background: #ffffff;
   background-image: radial-gradient(#7676763e 0.6px, transparent 0.6px);
-  background-size: 16px 16px; /* distancia entre los puntos */
+  background-size: 24px 24px; /* distancia entre los puntos */
 }
 
 .projects-header {

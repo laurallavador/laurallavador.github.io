@@ -195,9 +195,18 @@ The goal was to create an intuitive, engaging and seamless experience that met u
 
  
  <!-- Figma Embebed -->  
-   <div class="figma-container" style="height: 100%; border: none;">
-    <iframe style=" width: 100%; height: 100%; border: none;" src="https://embed.figma.com/proto/KXexzQclgHFABuZZNzE1kl/nohayvidasincomida?node-id=258-6797&p=f&scaling=scale-down&content-scaling=fixed&page-id=258%3A6755&starting-point-node-id=258%3A6757&show-proto-sidebar=1&embed-host=share" allowfullscreen></iframe>
-  </div>
+<div class="figma-container">
+  <!-- Desktop/tablet: Figma prototype -->
+  <iframe class="figma-embed"
+    src="https://embed.figma.com/proto/KXexzQclgHFABuZZNzE1kl/nohayvidasincomida?node-id=258-6788&starting-point-node-id=258%3A6757&embed-host=share" allowfullscreen>
+  </iframe>
+
+  <!-- Mobile: video fallback -->
+  <video class="figma-video" autoplay muted loop playsinline preload="metadata"
+    poster="/images/comida/delivery.png">
+    <source src="/images/comida/delivery.mp4" type="video/mp4">
+  </video>
+</div>
 
     <!-- FOOTER -->
   <footer class="footer">

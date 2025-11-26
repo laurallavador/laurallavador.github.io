@@ -82,7 +82,7 @@ Perfect for creating faster, more optimized, and visually polished designs.  </p
   </section>
 
  <!-- El Proceso de Diseño (sección inspirada en la captura) -->
-  <section class="section design-process" style="background-color: #dddddd42;">
+  <section class="section design-process" style="background-color: #ffffff;">
     <div class="container">
       <div class="container" style="max-width:1200px; margin:0 auto;">
       <div style="text-align:center; ">
@@ -126,7 +126,8 @@ We applied Design Thinking methodology to ensure the solution addressed real use
 
 
    <!-- Screens img -->
-  <section style="padding: 5%; background-color: rgb(221, 221, 221);">
+  <section style="padding: 5%; background-color: rgb(250, 250, 250); background-image: radial-gradient(#7676763e 0.6px, transparent 0.6px);
+  background-size: 24px 24px;;">
    <div class="carousel-wrap">
     <button class="carousel-btn carousel-prev" aria-label="Previous">‹</button>
     <div class="container-screen">
@@ -147,9 +148,20 @@ We applied Design Thinking methodology to ensure the solution addressed real use
 
 
  <!-- Figma Embebed -->  
-   <div class="figma-container" style="height: 100%; border: none;">
-<iframe style=" width: 100%; height: 100%; border: none;" src="https://embed.figma.com/proto/Y1x4acw534fKBAmdLMtuzI/CompresFlow_LauraLlavador_Final?node-id=275-1923&starting-point-node-id=275%3A1923&embed-host=share" allowfullscreen></iframe>
-  </div>
+<div class="figma-container">
+  <!-- Desktop/tablet: Figma prototype -->
+  <iframe class="figma-embed"
+    src="https://embed.figma.com/proto/Y1x4acw534fKBAmdLMtuzI/CompresFlow_LauraLlavador_Final?node-id=275-1923&starting-point-node-id=275%3A1923&embed-host=share"
+    allowfullscreen>
+  </iframe>
+
+  <!-- Mobile: video fallback -->
+  <video class="figma-video" autoplay muted loop playsinline preload="metadata"
+    poster="/images/compressflow/webflow.png">
+    <source src="/images/compressflow/webflow.mp4" type="video/mp4">
+  </video>
+</div>
+
 
     <!-- FOOTER -->
   <footer class="footer">
