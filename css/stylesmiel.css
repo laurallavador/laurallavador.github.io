@@ -27,13 +27,12 @@ html{
 html,
 body {
   height: 100%;
-  cursor: url("/laurallavador.github.io/images/cursor.png") 16 16, auto;
   scroll-behavior: smooth;
 }
 
 body {
   margin: 0;
-      background-color: #F2F2F2; /* beige de fondo */
+      background-color: #6c6240; /* beige de fondo */
   color: #0f172a;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -1028,7 +1027,7 @@ align-items: center !important;
 
 /* Results Section */
 .results-section {
-  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  background: #6c6240;
   color: white;
 }
 
@@ -1041,7 +1040,6 @@ align-items: center !important;
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
   gap: 28px;
-  margin-top: 40px;
 }
 
 .result-card {

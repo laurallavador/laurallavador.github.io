@@ -27,7 +27,6 @@ html{
 html,
 body {
   height: 100%;
-  cursor: url("/laurallavador.github.io/images/cursor.png") 16 16, auto;
   scroll-behavior: smooth;
 }
 
@@ -383,7 +382,6 @@ background: var(--accent-3);
 }
 
 .loader:hover {
-  cursor: pointer;
   background-color: lightgray;
 }
 
@@ -1854,4 +1852,5 @@ p{
   width: 100%!important;
 }
     }
-       
+
+

@@ -29,7 +29,7 @@
 
         <ul class="nav-links" id="nav-links">
           <li><a href="#about">About</a></li>
-          <li><a href="#projects">Work</a></li>
+          <li><a href="#projects">Work</a></li> 
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
           <div class="socials" style="display:flex;gap:16px">
@@ -145,7 +145,6 @@
 </section>
 
 
-
   <!-- PROJECTS  -->
   <section id="projects" class="projects section">
     <div class="container">
@@ -224,6 +223,181 @@
     </div>
   </section> 
 
+   <!-- 4. METRICS DASHBOARD -->
+  <section class="metrics-showcase">
+    <div class="metrics-container">
+      <div class="metrics-grid">
+        <div class="metric-card" data-metric="95">
+          <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 20px;"><img src="/images/compressflow/validation-icon.png" alt="buscar"/></div>
+          <div class="metric-value" data-target="95">0</div>
+          <div class="metric-label">User Satisfaction</div>
+          <div class="metric-bar"><div class="metric-progress"></div></div>
+        </div>
+        <div class="metric-card" data-metric="60">
+          <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 20px;"><img src="/images/compressflow/design-icon.png" alt="buscar"/></div>
+          <div class="metric-value" data-target="60">0</div>
+          <div class="metric-label">Prototypes Created</div>
+          <div class="metric-bar"><div class="metric-progress"></div></div>
+        </div>
+        <div class="metric-card" data-metric="85">
+          <div class="card-icon" style="width: 40px; height: 40px; margin-bottom: 20px;"><img src="/images/compressflow/definition-icon.png" alt="buscar"/></div>
+          <div class="metric-value" data-target="85">0</div>
+          <div class="metric-label">Design Consistency</div>
+          <div class="metric-bar"><div class="metric-progress"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <style>
+    
+    /* ============================================
+       4. METRICS DASHBOARD
+       ============================================ */
+    .metrics-showcase {
+      padding: 100px 100px;
+      background-color: #ffffff;
+      background-image: radial-gradient(#7b61ffcc 0.6px, transparent 0.6px);
+  background-size: 24px 24px; /* distancia entre los puntos */
+    }
+
+    .metrics-container {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .metrics-title {
+      text-align: center;
+      font-size: 3rem;
+      margin-bottom: 60px;
+      background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .metrics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+    }
+
+    .metric-card {
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      box-shadow: var(--shadow);
+
+    }
+
+    .metric-card:hover {
+      transform: translateY(-5px);
+      border-color: rgba(255, 255, 255, 0.3);
+    }
+
+    .metric-icon {
+      font-size: 2.4rem;
+      margin-bottom: 20px;
+      filter: grayscale(0);
+    }
+
+    .metric-value {
+      font-size: 2.4rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #7b61ffcc 0%, #fa709a 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 10px;
+    }
+
+    .metric-label {
+      color: #aaa;
+      font-size: 1rem;
+    }
+
+    .metric-bar {
+      height: 6px;
+      background: rgb(179, 179, 179);
+      border-radius: 10px;
+      margin-top: 20px;
+      overflow: hidden;
+    }
+
+    .metric-progress {
+      height: 100%;
+      background: linear-gradient(90deg, #849E00 0%, #e2ff52 100%);
+      border-radius: 10px;
+      width: 0;
+      transition: width 1s ease;
+    }
+
+    @media (max-width: 768px) {
+      .constellation-title,
+      .process-title,
+      .simulator-title,
+      .metrics-title {
+        font-size: 2rem;
+      }
+
+      .process-card {
+        flex: 0 0 280px;
+      }
+
+      .skills-canvas {
+        height: 400px;
+      }
+    }
+
+       
+  </style>
+
+  <script>
+
+    // ============================================
+    // 4. METRICS COUNTER ANIMATION
+    // ============================================
+    const metricCards = document.querySelectorAll('.metric-card');
+    
+    const observerOptions = {
+      threshold: 0.5
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const card = entry.target;
+          const valueElement = card.querySelector('.metric-value');
+          const progressBar = card.querySelector('.metric-progress');
+          const target = parseInt(valueElement.getAttribute('data-target'));
+          const metricPercent = parseInt(card.getAttribute('data-metric'));
+          
+          let current = 0;
+          const increment = target / 50;
+          const timer = setInterval(() => {
+            current += increment;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            valueElement.textContent = Math.floor(current) + (target > 50 ? '%' : '+');
+          }, 30);
+
+          // Animate progress bar
+          setTimeout(() => {
+            progressBar.style.width = metricPercent + '%';
+          }, 100);
+
+          observer.unobserve(card);
+        }
+      });
+    }, observerOptions);
+
+    metricCards.forEach(card => observer.observe(card));
+  </script>
+
  
 
   <!-- SKILLS -->
@@ -298,6 +472,7 @@
       </div>
     </div>
   </footer>
+
 
   <!-- Scripts -->
   <script src="js/main.js"></script>
