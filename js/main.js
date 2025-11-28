@@ -41,22 +41,6 @@
       });
     });
 
-    // Botón scroll to top
-    const scrollToTopBtn = document.getElementById('scrollToTopBtn');
-    if (scrollToTopBtn) {
-      window.addEventListener('scroll', () => {
-        if (window.scrollY > 200) {
-          scrollToTopBtn.style.display = 'block';
-        } else {
-          scrollToTopBtn.style.display = 'none';
-        }
-      });
-      
-      scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      });
-    }
-
     // Hacer que el título de la barra de navegación lleve arriba
     const navbarTitle = document.querySelector('.navbar-title');
     if (navbarTitle) {
@@ -74,15 +58,6 @@
   if (music && loader) {
     loader.addEventListener("click", () => {
       music.play();
-    });
-  }
-
-  // Cursor personalizado
-  const cursor = document.querySelector(".cursor");
-  if (cursor) {
-    document.addEventListener("mousemove", (e) => {
-      cursor.style.top = e.clientY + "px";
-      cursor.style.left = e.clientX + "px";
     });
   }
 
@@ -190,85 +165,24 @@ document.addEventListener('DOMContentLoaded', function () {
   cs.tabIndex = 0;
 });
 
-// Card-sorting: drag & drop + selectable state
-document.addEventListener('DOMContentLoaded', function () {
-  const grid = document.querySelector('.cardsort-grid');
-  if (!grid) return;
+// Función para detectar si es dispositivo móvil o táctil
+function isMobileOrTouchDevice() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
 
-  const storageKey = 'cardsort-order';
-  const saved = JSON.parse(localStorage.getItem(storageKey) || 'null');
-  
-  if (saved && Array.isArray(saved) && saved.length) {
-    const map = Array.from(grid.children).reduce((m, el) => (m.set(el.textContent.trim(), el), m), new Map());
-    saved.forEach(key => {
-      const el = map.get(key);
-      if (el) grid.appendChild(el);
-    });
-  }
-
-  function saveOrder() {
-    const order = Array.from(grid.children).map(el => el.textContent.trim());
-    localStorage.setItem(storageKey, JSON.stringify(order));
-  }
-
-  function getDragAfterElement(container, x, y) {
-    const draggableElements = [...container.querySelectorAll('.cardsort-item:not(.dragging)')];
-    if (!draggableElements.length) return null;
-    
-    let closest = {offset: Infinity, element: null};
-    draggableElements.forEach(child => {
-      const box = child.getBoundingClientRect();
-      const cx = box.left + box.width / 2;
-      const cy = box.top + box.height / 2;
-      const offset = Math.hypot(x - cx, y - cy);
-      if (offset < closest.offset) closest = {offset, element: child};
-    });
-    return closest.element;
-  }
-
-  const items = Array.from(grid.querySelectorAll('.cardsort-item'));
-  items.forEach(item => {
-    item.setAttribute('draggable', 'true');
-    item.setAttribute('aria-pressed', 'false');
-
-    item.addEventListener('click', (e) => {
-      item.classList.toggle('selected');
-      item.setAttribute('aria-pressed', item.classList.contains('selected'));
-    });
-    
-    item.addEventListener('keydown', (e) => {
-      if (e.key === ' ' || e.key === 'Enter') {
-        e.preventDefault();
-        item.click();
-      }
-    });
-
-    item.addEventListener('dragstart', (e) => {
-      item.classList.add('dragging');
-      try { 
-        e.dataTransfer.setData('text/plain', item.textContent.trim()); 
-      } catch (err) {}
-      e.dataTransfer.effectAllowed = 'move';
-    });
-    
-    item.addEventListener('dragend', () => {
-      item.classList.remove('dragging');
-      saveOrder();
-    });
-  });
-
-  grid.addEventListener('dragover', (e) => {
-    e.preventDefault();
-    const dragging = grid.querySelector('.dragging');
-    if (!dragging) return;
-    const after = getDragAfterElement(grid, e.clientX, e.clientY);
-    if (!after) grid.appendChild(dragging);
-    else grid.insertBefore(dragging, after);
-  });
-});
-
-// Función para crear cursor circular personalizado
+// Función para crear cursor circular personalizado (solo en desktop)
 function initCustomCursor() {
+  // No inicializar el cursor en dispositivos móviles o táctiles
+  if (isMobileOrTouchDevice()) {
+    console.log('Dispositivo móvil detectado: cursor personalizado deshabilitado');
+    return;
+  }
+
   // Crear el elemento del cursor
   const cursor = document.createElement('div');
   cursor.className = 'custom-cursor';
@@ -277,34 +191,35 @@ function initCustomCursor() {
   // Añadir estilos CSS dinámicamente
   const style = document.createElement('style');
   style.textContent = `
-    * {
-      cursor: none !important;
-    }
+    @media (pointer: fine) {
+      * {
+        cursor: none !important;
+      }
 
-    .custom-cursor {
-      width: 14px;
-      height: 14px;
-      background-color: #7b61ff;
-      border-radius: 50%;
-      position: fixed;
-      pointer-events: none;
-      z-index: 9999;
-      transform: translate(-50%, -50%);
-      transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
-      mix-blend-mode: difference;
-    }
+      .custom-cursor {
+        width: 14px;
+        height: 14px;
+        background-color: #7b61ff;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        mix-blend-mode: difference;
+      }
 
-    .custom-cursor.hover {
-      width: 50px;
-      height: 50px;
-      background-color: rgba(255, 255, 255, 1);
-      mix-blend-mode: difference;
-    }
+      .custom-cursor.hover {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 1);
+        mix-blend-mode: difference;
+      }
 
-    .custom-cursor.click {
-      width: 15px;
-      height: 15px;
-      background-color: rgba(51, 51, 51, 0.3);
+      .custom-cursor.click {
+        width: 10px;
+        height: 10px;
+      }
     }
   `;
   document.head.appendChild(style);
@@ -355,4 +270,3 @@ if (document.readyState === 'loading') {
 } else {
   initCustomCursor();
 }
-
