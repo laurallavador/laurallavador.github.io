@@ -270,3 +270,4 @@ if (document.readyState === 'loading') {
 } else {
   initCustomCursor();
 }
+

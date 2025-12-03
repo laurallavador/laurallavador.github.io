@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SportAI Case Study | Interactive Portfolio</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+ <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@200;400;600&family=Poppins:ital,wght@0,500;0,700;1,500&display=swap" rel="stylesheet">    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- Chart Container Styling (Strict Adherence) --- */
+:root{
+font-family: 'Poppins', system-ui;
+
+}
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 800px; /* max-w-3xl equivalent */
+            margin-left: auto;
+            margin-right: auto;
+            height: 300px;
+            max-height: 400px;
+        }
+
+        /* Responsive adjustments for chart height */
+        @media (min-width: 768px) {
+            .chart-container {
+                height: 350px;
+            }
+        }
+        
+
+        body {
+            font-family: 'Poppins', system-ui;
+            background-color: #f5f5f4; /* Warm Stone-100 */
+            color: #1c1917; /* Stone-900 */
+        }
+
+        /* Utility for smooth scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        /* SportAI Brand Colors for the Demo Section */
+        .brand-bg { background-color: #0D0E12; }
+        .brand-card { background-color: #15171E; }
+        .brand-purple { color: #6C5DD3; }
+        .brand-green { color: #24D69D; }
+        
+        /* Interactive Card Hover Effects */
+        .hover-card {
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .hover-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Tab Transition */
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.4s ease;
+        }
+        .tab-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Header */
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 9999;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.66), rgba(255, 255, 255, 0.45));
+  backdrop-filter: blur(6px);
+  border-bottom: 1px solid rgba(15, 23, 42, 0.03)
+}
+
+.header::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  backdrop-filter: blur(6px);
+  z-index: -1;
+}
+
+.nav {
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 0
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 12px
+}
+
+.logo img {
+  height: 60px
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+  align-items: center;
+  list-style: none;
+  margin: 0;
+  padding: 0
+}
+
+.nav-links a {
+  font-weight: 500;
+  padding: 8px 12px;
+  border-radius: 10px;
+  transition: all .22s
+}
+
+.nav-links a:hover {
+  background: rgba(123, 97, 255, 0.08);
+  transform: translateY(-2px)
+}
+
+.hamburger {
+  display: none;
+  background: transparent;
+  border: 0;
+  font-size: 22px
+}
+
+/* --- Responsive full-screen menu --- */
+@media (max-width: 780px) {
+
+  /* Estilo del icono hamburguesa */
+  .hamburger {
+    position: relative;
+    width: 28px;
+    height: 22px;
+    display: block;
+    flex-direction: column;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    padding: 0;
+  }
+
+    /* El menú se vuelve vertical */
+  .nav-links{
+display: flex;
+flex-direction: column;
+gap: 8px;
+position: absolute;
+top: 64px;
+right: 10px;
+padding: 16px 12px;
+background-color: white;
+  }
+  
+  .nav-links.active {
+    display: flex;
+    background: white;
+    box-shadow: var(--shadow);
+    border-radius: 12px;
+  }
+
+  /* Las 3 líneas */
+  .hamburger span {
+    display: block;
+    height: 3px;
+    background: #0f172a;
+    border-radius: 2px;
+    transition: transform .3s ease, opacity .3s ease;
+  }
+}
+    </style>
+
+      <!-- Styles -->
+  <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body class="antialiased">
+
+    <!-- Chosen Palette: Warm Neutrals (Stone) for the Case Study wrapper, contrasting with the SportAI Dark Mode for the project artifacts. -->
+    
+    <!-- Application Structure Plan:
+        1. Sticky Nav: Easy access to report sections.
+        2. Hero: High-level project context (Role, Timeline).
+        3. Problem Section: Interactive cards revealing the core user pain points.
+        4. Strategy/Wireframes: A tabbed interface comparing the initial concepts (showing process).
+        5. Solution Demo: The "Wow" factor - a live, functional version of the dashboard chart to prove the UX concept.
+        6. Design System: A "Live Style Guide" showing tokens and components.
+        7. Impact/Footer: Summary of results.
+        
+        Rationale: This structure moves from Context -> Conflict (Problem) -> Resolution (Solution) -> Proof (System/Impact), mirroring a classic storytelling arc but making every step interactive.
+    -->
+
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+
+    <header class="header">
+    <div class="container nav">
+      <a href="/" class="logo" aria-label="Volver">‹ Back</a>
+      <nav>
+      </nav>
+    </div>
+  </header>
+
+    <!-- Main Content Wrapper -->
+    <main class="pt-20 pb-20">
+
+        <!-- 1. Context / Hero Section -->
+        <!-- Visualization: Text Block + Key Metrics Grid -->
+        <section id="context" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mb-20 mt-10">
+            <div class="text-center mb-12">
+                <span class="inline-block px-3 py-1 rounded-full bg-stone-200 text-stone-600 text-xs font-bold uppercase tracking-wider mb-4">UX/UI Case Study</span>
+                <h1 class="text-4xl md:text-6xl font-extrabold text-stone-900 mb-6">Democratizing Biomechanics</h1>
+                <p class="text-xl text-stone-600 max-w-3xl mx-auto leading-relaxed">
+                    How we used AI and a precision-focused design system to help amateur athletes break through performance plateaus.
+                </p>
+            </div>
+
+            <!-- Project Meta Data Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm text-center hover-card">
+                    <div class="text-[#6C5DD3] text-2xl mb-2"><i class="fa-solid fa-user-pen"></i></div>
+                    <h3 class="font-bold text-stone-900 text-sm uppercase">My Role</h3>
+                    <p class="text-stone-600 text-sm mt-1">UX Research, UI Design, Interaction</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm text-center hover-card">
+                    <div class="text-[#6C5DD3] text-2xl mb-2"><i class="fa-regular fa-clock"></i></div>
+                    <h3 class="font-bold text-stone-900 text-sm uppercase">Timeline</h3>
+                    <p class="text-stone-600 text-sm mt-1">2 Weeks Sprint</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm text-center hover-card">
+                    <div class="text-[#6C5DD3] text-2xl mb-2"><i class="fa-solid fa-mobile-screen"></i></div>
+                    <h3 class="font-bold text-stone-900 text-sm uppercase">Platform</h3>
+                    <p class="text-stone-600 text-sm mt-1">Responsive Web App</p>
+                </div>
+                <div class="bg-white p-6 rounded-xl border border-stone-200 shadow-sm text-center hover-card">
+                    <div class="text-[#6C5DD3] text-2xl mb-2"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+                    <h3 class="font-bold text-stone-900 text-sm uppercase">Tools</h3>
+                    <p class="text-stone-600 text-sm mt-1">Figma, Chart.js, Tailwind</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 2. The Problem Section -->
+        <!-- Visualization: Interactive Cards that reveal details on click/hover -->
+        <section id="problem" class="bg-white py-20 border-y border-stone-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="mb-12">
+                    <h2 class="text-3xl font-bold text-stone-900 mb-4">The Challenge: The "Technique Plateau"</h2>
+                    <p class="text-lg text-stone-600">Amateur athletes often hit a wall because they lack objective data. We identified three core friction points preventing progress.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <!-- Pain Point 1 -->
+                    <div class="group p-8 bg-stone-50 rounded-2xl border border-stone-100 hover:border-[#6C5DD3] transition-all cursor-default">
+                        <div class="w-12 h-12 bg-red-100 rounded-lg flex items-center justify-center text-red-500 mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-eye-slash text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-3">Subjectivity</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            "Does my form look right?" Feedback currently relies on the naked eye, which misses micro-movements and velocity changes.
+                        </p>
+                    </div>
+
+                    <!-- Pain Point 2 -->
+                    <div class="group p-8 bg-stone-50 rounded-2xl border border-stone-100 hover:border-[#6C5DD3] transition-all cursor-default">
+                        <div class="w-12 h-12 bg-orange-100 rounded-lg flex items-center justify-center text-orange-500 mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-sack-dollar text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-3">Accessibility</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Professional biomechanics labs cost thousands of dollars. Elite data was gated behind elite paywalls.
+                        </p>
+                    </div>
+
+                    <!-- Pain Point 3 -->
+                    <div class="group p-8 bg-stone-50 rounded-2xl border border-stone-100 hover:border-[#6C5DD3] transition-all cursor-default">
+                        <div class="w-12 h-12 bg-blue-100 rounded-lg flex items-center justify-center text-blue-500 mb-4 group-hover:scale-110 transition-transform">
+                            <i class="fa-solid fa-chart-pie text-xl"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-stone-900 mb-3">Data Overload</h3>
+                        <p class="text-stone-600 text-sm leading-relaxed">
+                            Existing trackers show "What" (Heart Rate: 150) but fail to explain "How" (Knee valgus angle: 12 degrees).
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 3. The Solution / Interactive Prototype -->
+        <!-- Visualization: Chart.js visualization of the "Solution" dashboard. -->
+        <!-- Visualization & Content Choices: 
+             Report Info: The case study describes a "Precision in Every Rep" solution with specific metrics.
+             Goal: Demonstrate the functionality of the designed dashboard.
+             Viz Method: Embedded Chart.js within a dark-mode container to simulate the actual app UI.
+             Interaction: User can toggle timeframes (Week/Month) to see the chart animate, simulating the app's responsiveness.
+        -->
+
+            <!-- 3. Biomechanics Focus (Source Visual Context) -->
+        <section id="biomechanics" class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+             <div class="flex flex-col md:flex-row gap-12 items-center">
+                
+                <!-- Text Context -->
+                <div class="w-full md:w-1/2">
+                    <span class="text-[#6C5DD3] font-bold tracking-wide uppercase text-sm">Source Analysis</span>
+                    <h2 class="text-3xl font-bold text-stone-900 mt-2 mb-6">Simplifying Kinetic Chain Data</h2>
+                    <p class="text-stone-600 mb-6 leading-relaxed">
+                        The raw data for performance tracking involves analyzing the kinetic chain, the sequence of body segments creating motion. The challenge was displaying complex joint angles, velocity vectors, and force distribution in a simple, non-overwhelming way.
+                    </p>
+                    <p class="text-sm text-stone-500 italic">
+                        The system must instantly translate this dense technical information into a clear, actionable Performance Score, which is the core goal of the UI design.
+                    </p>
+                </div>
+
+                <!-- Source Diagram Placeholder -->
+                <div class="w-full md:w-1/2" >
+                    <img
+                        src="/images/sportai1.png"
+                        alt="Biomechanics Kinetic Chain Diagram Placeholder"
+                        class="placeholder-image"
+                        style="border-radius: 12px;"
+                        onerror="this.onerror=null;this.src='https://placehold.co/600x400/0D0E12/24D69D?text=Biomechanics+Diagram+Unavailable'"
+                    >
+                    <p class="text-xs text-center text-stone-500 mt-2">Visual representation of joint rotation and velocity vectors.</p>
+                </div>
+            </div>
+
+            
+        </section>
+
+        <!-- 4. Design System / Live Style Guide -->
+        <!-- Visualization: Grid of color swatches and typography. -->
+        <section id="system" class="bg-stone-50 py-20 border-y border-stone-200">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-12">
+                    <h2 class="text-3xl font-bold text-stone-900">The Design System</h2>
+                    <p class="text-stone-600">A minimal, "Dark Mode" vocabulary built for focus and precision.</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12">
+                    <!-- Colors -->
+                    <div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-6 border-b border-stone-200 pb-2">Color Tokens</h3>
+                        <div class="space-y-4">
+                            <!-- Token: Primary -->
+                            <div class="flex items-center justify-between group cursor-pointer" onclick="copyColor('#6C5DD3')">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded-lg bg-[#6C5DD3] shadow-sm ring-1 ring-stone-200"></div>
+                                    <div>
+                                        <p class="font-bold text-stone-900">Primary Main</p>
+                                        <p class="text-xs text-stone-500">Brand Actions, Active States</p>
+                                    </div>
+                                </div>
+                                <code class="bg-white px-2 py-1 rounded border border-stone-200 text-xs text-stone-500 group-hover:text-[#6C5DD3] transition-colors">#6C5DD3</code>
+                            </div>
+
+                            <!-- Token: Success -->
+                            <div class="flex items-center justify-between group cursor-pointer" onclick="copyColor('#24D69D')">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded-lg bg-[#24D69D] shadow-sm ring-1 ring-stone-200"></div>
+                                    <div>
+                                        <p class="font-bold text-stone-900">Success Bright</p>
+                                        <p class="text-xs text-stone-500">Growth, Positive Trends</p>
+                                    </div>
+                                </div>
+                                <code class="bg-white px-2 py-1 rounded border border-stone-200 text-xs text-stone-500 group-hover:text-[#24D69D] transition-colors">#24D69D</code>
+                            </div>
+
+                            <!-- Token: Surface -->
+                            <div class="flex items-center justify-between group cursor-pointer" onclick="copyColor('#0D0E12')">
+                                <div class="flex items-center gap-4">
+                                    <div class="w-16 h-16 rounded-lg bg-[#0D0E12] shadow-sm ring-1 ring-stone-200"></div>
+                                    <div>
+                                        <p class="font-bold text-stone-900">Surface Base</p>
+                                        <p class="text-xs text-stone-500">Application Background</p>
+                                    </div>
+                                </div>
+                                <code class="bg-white px-2 py-1 rounded border border-stone-200 text-xs text-stone-500 group-hover:text-black transition-colors">#0D0E12</code>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Typography & Components -->
+                    <div>
+                        <h3 class="text-lg font-bold text-stone-900 mb-6 border-b border-stone-200 pb-2">Typography & Elements</h3>
+                        
+                        <div class="space-y-6">
+                            <div>
+                                <h1 class="text-4xl font-bold text-stone-900">Display Large</h1>
+                                <p class="text-xs text-stone-400 mt-1">Inter Bold / 32px</p>
+                            </div>
+                            <div>
+                                <h2 class="text-2xl font-semibold text-stone-900">Heading Medium</h2>
+                                <p class="text-xs text-stone-400 mt-1">Inter SemiBold / 24px</p>
+                            </div>
+                            <div>
+                                <p class="text-base text-stone-600">Body text is set in Inter Regular at 16px for optimal readability against dark backgrounds. We use a slightly taller line-height (1.5) to reduce eye strain.</p>
+                            </div>
+
+                            <!-- Live Component: Button -->
+                            <div class="pt-6 border-t border-stone-200">
+                                <p class="text-xs font-bold text-stone-500 uppercase mb-4">Interactive Components</p>
+                                <div class="flex gap-4">
+                                    <button class="px-6 py-3 bg-[#6C5DD3] text-white rounded-xl font-medium shadow-[0_0_12px_rgba(108,93,211,0.5)] hover:bg-[#594AB9] hover:scale-105 transition-all">
+                                        Primary Action
+                                    </button>
+                                    <button class="px-6 py-3 bg-transparent border border-[#6C5DD3] text-[#6C5DD3] rounded-xl font-medium hover:bg-purple-50 transition-all">
+                                        Secondary
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+     <section id="solution" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+            <div class="flex flex-col md:flex-row gap-12 items-start">
+                
+                <!-- Text Context -->
+                <div class="w-full md:w-1/3 sticky top-24">
+                    <span class="text-[#6C5DD3] font-bold tracking-wide uppercase text-sm">The Solution</span>
+                    <h2 class="text-3xl font-bold text-stone-900 mt-2 mb-6">SportAI Dashboard</h2>
+                    <p class="text-stone-600 mb-6 leading-relaxed">
+                        We designed a high-contrast, dark-mode interface that prioritizes actionable KPIs. The goal was <strong>immediate clarity</strong> in high-stress training environments.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-green-100 flex items-center justify-center mt-1 mr-3">
+                                <i class="fa-solid fa-check text-green-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-stone-900 text-sm">Actionable Insights</h4>
+                                <p class="text-xs text-stone-500">Complex biomechanics translated into a simple 0-100 score.</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0 w-6 h-6 rounded-full bg-purple-100 flex items-center justify-center mt-1 mr-3">
+                                <i class="fa-solid fa-check text-purple-600 text-xs"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-stone-900 text-sm">Trend Tracking</h4>
+                                <p class="text-xs text-stone-500">Visualizing improvement over time to build motivation.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-8 p-4 bg-stone-100 rounded-lg border border-stone-200">
+                        <p class="text-xs text-stone-500 mb-2 uppercase font-bold">Try the interactions:</p>
+                        <div class="flex gap-2">
+                            <button id="btn-week" class="flex-1 py-2 px-4 bg-white border border-stone-300 rounded shadow-sm text-sm font-medium hover:border-[#6C5DD3] hover:text-[#6C5DD3] transition-colors">Last 7 Days</button>
+                            <button id="btn-month" class="flex-1 py-2 px-4 bg-[#6C5DD3] text-white rounded shadow-sm text-sm font-medium hover:bg-[#594AB9] transition-colors">Last 30 Days</button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interactive App Simulation (The "Wow" Factor) -->
+                <div class="w-full md:w-2/3">
+                    <div class="brand-bg rounded-2xl shadow-2xl overflow-hidden border border-stone-800 p-6 relative">
+                        <!-- Mock App Header -->
+                        <div class="flex justify-between items-center mb-8 border-b border-gray-800 pb-4">
+                            <div class="text-white font-bold text-xl"><i class="fa-solid fa-bolt text-[#6C5DD3] mr-2"></i> SportAI</div>
+                            <div class="flex gap-3">
+                                <div class="w-8 h-8 rounded-full bg-gray-800 flex items-center justify-center text-gray-400"><i class="fa-solid fa-bell"></i></div>
+                                <div class="w-8 h-8 rounded-full bg-[#6C5DD3] flex items-center justify-center text-white text-xs">JD</div>
+                            </div>
+                        </div>
+
+                        <!-- KPI Grid -->
+                        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+                            <!-- Card 1 -->
+                            <div class="brand-card p-4 rounded-xl border border-gray-800">
+                                <p class="text-gray-400 text-xs mb-1">Performance Score</p>
+                                <h3 class="text-white text-2xl font-bold">87</h3>
+                                <p class="text-[#24D69D] text-xs mt-1 flex items-center"><i class="fa-solid fa-arrow-trend-up mr-1"></i> +5 pts</p>
+                            </div>
+                            <!-- Card 2 -->
+                            <div class="brand-card p-4 rounded-xl border border-gray-800">
+                                <p class="text-gray-400 text-xs mb-1">Accuracy</p>
+                                <h3 class="text-white text-2xl font-bold">92%</h3>
+                                <p class="text-[#24D69D] text-xs mt-1 flex items-center"><i class="fa-solid fa-arrow-up mr-1"></i> +3%</p>
+                            </div>
+                             <!-- Card 3 -->
+                             <div class="brand-card p-4 rounded-xl border border-gray-800">
+                                <p class="text-gray-400 text-xs mb-1">Sessions</p>
+                                <h3 class="text-white text-2xl font-bold">24</h3>
+                                <p class="text-gray-500 text-xs mt-1">This month</p>
+                            </div>
+                             <!-- Card 4 -->
+                             <div class="brand-card p-4 rounded-xl border border-gray-800">
+                                <p class="text-gray-400 text-xs mb-1">Recovery</p>
+                                <h3 class="text-white text-2xl font-bold">78</h3>
+                                <p class="text-gray-500 text-xs mt-1">Optimal</p>
+                            </div>
+                        </div>
+
+                        <!-- Chart Section -->
+                        <div class="brand-card p-6 rounded-xl border border-gray-800">
+                            <div class="flex justify-between items-center mb-6">
+                                <div>
+                                    <h3 class="text-white font-semibold">Performance Trends</h3>
+                                    <p class="text-gray-500 text-xs">Technique accuracy over time</p>
+                                </div>
+                                <div class="flex gap-2">
+                                    <span class="w-3 h-3 rounded-full bg-[#6C5DD3]"></span>
+                                    <span class="text-xs text-gray-400">Score</span>
+                                </div>
+                            </div>
+                            
+                            <!-- Responsive Chart Container -->
+                            <div class="chart-container">
+                                <canvas id="performanceChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    
+
+            <!-- 4. The Solution / Interactive Prototype -->
+        <section id="solution" class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-20 brand-bg rounded-2xl shadow-2xl border border-stone-800" style="max-width: 100%;">
+            <div class="px-6 pb-12" style="align-items: center; text-align: center;">
+                <span class="text-[#6C5DD3] font-bold tracking-wide uppercase text-sm">The Solution</span>
+                <h2 class="text-3xl font-bold text-white mt-2 mb-6">SportAI Dashboard</h2>
+                <p class="text-stone-400 mb-8 leading-relaxed max-w-4xl" style="justify-content: center; margin-left: auto; margin-right: auto;">
+                    We designed a high-contrast, dark-mode interface that prioritizes actionable KPIs, directly addressing the "Data Overload" friction point. The dashboard shows immediate progress, while the interactive chart below demonstrates how we handle trend analysis.
+                </p>
+            </div>
+            
+            <!-- Full UI Image Placeholder (using uploaded image as reference) -->
+            <div class="px-6 mb-16">
+                 <img
+                    src="/images/sportai.png"
+                    alt="SportAI Dashboard UI Screenshot"
+                    class="placeholder-image" style="border-radius: 12px;"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x700/0D0E12/6C5DD3?text=Dashboard+Image+Unavailable'"
+                >
+                <p class="text-xs text-center text-stone-500 mt-4">The final UI prioritizing navigation, KPIs, and visual hierarchy.</p>
+            </div>
+
+             <!-- Full UI Image Placeholder (using uploaded image as reference) -->
+            <div class="px-6 mb-16">
+                 <img
+                    src="/images/sportai2.png"
+                    alt="SportAI Dashboard UI Screenshot"
+                    class="placeholder-image" style="justify-content: center; margin-left: auto; margin-right: auto; border-radius: 12px;"
+                    onerror="this.onerror=null;this.src='https://placehold.co/1200x700/0D0E12/6C5DD3?text=Dashboard+Image+Unavailable'"
+                >
+                <p class="text-xs text-center text-stone-500 mt-4">Mobile version of the final UI prototype.</p>
+            </div>
+        </section>
+
+       
+
+        <!-- 5. Outcomes -->
+        <section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center">
+            <h2 class="text-3xl font-bold text-stone-900 mb-6">The Outcome</h2>
+            <div class="p-8 bg-gradient-to-br from-[#6C5DD3] to-[#594AB9] rounded-2xl text-white shadow-xl">
+                <p class="text-xl md:text-2xl font-medium leading-relaxed mb-6">
+                    "SportAI successfully bridged the gap between raw data and athlete understanding. The new dashboard allows users to diagnose technique errors in <span class="text-[#24D69D] font-bold">under 30 seconds</span>."
+                </p>
+                <div class="flex justify-center gap-8 border-t border-white/20 pt-6">
+                    <div>
+                        <span class="block text-3xl font-bold">100%</span>
+                        <span class="text-sm text-purple-200">Responsive</span>
+                    </div>
+                    <div>
+                        <span class="block text-3xl font-bold">AA</span>
+                        <span class="text-sm text-purple-200">WCAG Compliant</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container" style="display:flex;align-items:center;justify-content:space-between">
+      <p>&copy; 2025 Laura Llavador. Todos los derechos reservados.</p>
+      <div class="socials" style="display:flex;gap:16px">
+        <a href="https://www.linkedin.com/in/laurallavadorgarcia/" aria-label="LinkedIn"> <i class="fa-brands fa-linkedin"></i></a>
+        <a href="https://www.behance.net/laurallavador" aria-label="Behance"><i class="fa-brands fa-behance"></i></a>
+      </div>
+    </div>
+  </footer>
+
+
+    <!-- JavaScript Logic -->
+    <script>
+        // State Management
+        const state = {
+            currentPeriod: 'month',
+            chartInstance: null,
+            data: {
+                week: [65, 72, 70, 81, 86, 85, 92],
+                month: [60, 62, 65, 68, 70, 72, 69, 75, 78, 82, 85, 87, 86, 88, 90, 92] // simplified for demo
+            },
+            labels: {
+                week: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+                month: ['W1', 'W2', 'W3', 'W4', 'W1', 'W2', 'W3', 'W4', 'W1', 'W2', 'W3', 'W4', 'W1', 'W2', 'W3', 'W4']
+            }
+        };
+
+        // DOM Elements
+        const btnWeek = document.getElementById('btn-week');
+        const btnMonth = document.getElementById('btn-month');
+        const ctx = document.getElementById('performanceChart').getContext('2d');
+
+        // Initialize Chart
+        function initChart() {
+            // Gradient Setup
+            const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient.addColorStop(0, 'rgba(108, 93, 211, 0.5)'); // Brand Purple
+            gradient.addColorStop(1, 'rgba(108, 93, 211, 0)');
+
+            state.chartInstance = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: state.labels.month,
+                    datasets: [{
+                        label: 'Technique Accuracy',
+                        data: state.data.month,
+                        borderColor: '#6C5DD3',
+                        backgroundColor: gradient,
+                        borderWidth: 3,
+                        pointBackgroundColor: '#15171E',
+                        pointBorderColor: '#6C5DD3',
+                        pointBorderWidth: 2,
+                        pointRadius: 4,
+                        pointHoverRadius: 6,
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false, // Critical for container compliance
+                    plugins: {
+                        legend: { display: false },
+                        tooltip: {
+                            backgroundColor: '#15171E',
+                            titleColor: '#fff',
+                            bodyColor: '#9296A5',
+                            borderColor: '#2B2E3B',
+                            borderWidth: 1,
+                            padding: 10,
+                            displayColors: false,
+                            callbacks: {
+                                label: function(context) {
+                                    return context.parsed.y + '% Accuracy';
+                                }
+                            }
+                        }
+                    },
+                    scales: {
+                        y: {
+                            grid: { color: '#2B2E3B', drawBorder: false },
+                            ticks: { color: '#9296A5', font: { family: 'Inter' } },
+                            min: 50,
+                            max: 100
+                        },
+                        x: {
+                            grid: { display: false },
+                            ticks: { color: '#9296A5', font: { family: 'Inter' }, maxTicksLimit: 8 }
+                        }
+                    },
+                    interaction: {
+                        mode: 'index',
+                        intersect: false,
+                    }
+                }
+            });
+        }
+
+        // Interaction Logic: Update Chart
+        function updateChart(period) {
+            state.currentPeriod = period;
+            
+            // Update UI State
+            if(period === 'week') {
+                btnWeek.classList.add('bg-[#6C5DD3]', 'text-white');
+                btnWeek.classList.remove('bg-white', 'text-stone-900');
+                btnMonth.classList.remove('bg-[#6C5DD3]', 'text-white');
+                btnMonth.classList.add('bg-white', 'text-stone-900');
+                
+                state.chartInstance.data.labels = state.labels.week;
+                state.chartInstance.data.datasets[0].data = state.data.week;
+            } else {
+                btnMonth.classList.add('bg-[#6C5DD3]', 'text-white');
+                btnMonth.classList.remove('bg-white', 'text-stone-900');
+                btnWeek.classList.remove('bg-[#6C5DD3]', 'text-white');
+                btnWeek.classList.add('bg-white', 'text-stone-900');
+                
+                state.chartInstance.data.labels = state.labels.month;
+                state.chartInstance.data.datasets[0].data = state.data.month;
+            }
+
+            state.chartInstance.update();
+        }
+
+        // Navigation Scroll
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if(el) {
+                // Offset for sticky header
+                const y = el.getBoundingClientRect().top + window.pageYOffset - 80;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        }
+
+        // Copy to Clipboard Utility
+        function copyColor(hex) {
+            navigator.clipboard.writeText(hex).then(() => {
+                alert(`Copied ${hex} to clipboard!`);
+            });
+        }
+
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            initChart();
+            
+            btnWeek.addEventListener('click', () => updateChart('week'));
+            btnMonth.addEventListener('click', () => updateChart('month'));
+        });
+
+    // Función para detectar si es dispositivo móvil o táctil
+function isMobileOrTouchDevice() {
+  return (
+    'ontouchstart' in window ||
+    navigator.maxTouchPoints > 0 ||
+    /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent) ||
+    window.matchMedia('(pointer: coarse)').matches
+  );
+}
+
+// Función para crear cursor circular personalizado (solo en desktop)
+function initCustomCursor() {
+  // No inicializar el cursor en dispositivos móviles o táctiles
+  if (isMobileOrTouchDevice()) {
+    console.log('Dispositivo móvil detectado: cursor personalizado deshabilitado');
+    return;
+  }
+
+  // Crear el elemento del cursor
+  const cursor = document.createElement('div');
+  cursor.className = 'custom-cursor';
+  document.body.appendChild(cursor);
+
+  // Añadir estilos CSS dinámicamente
+  const style = document.createElement('style');
+  style.textContent = `
+    @media (pointer: fine) {
+      * {
+        cursor: none !important;
+      }
+
+      .custom-cursor {
+        width: 14px;
+        height: 14px;
+        background-color: #7b61ff;
+        border-radius: 50%;
+        position: fixed;
+        pointer-events: none;
+        z-index: 9999;
+        transform: translate(-50%, -50%);
+        transition: width 0.3s ease, height 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+        mix-blend-mode: difference;
+      }
+
+      .custom-cursor.hover {
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 1);
+        mix-blend-mode: difference;
+      }
+
+      .custom-cursor.click {
+        width: 10px;
+        height: 10px;
+      }
+    }
+  `;
+  document.head.appendChild(style);
+
+  // Seguir el movimiento del mouse
+  document.addEventListener('mousemove', (e) => {
+    cursor.style.left = e.clientX + 'px';
+    cursor.style.top = e.clientY + 'px';
+  });
+
+  // Detectar hover en elementos interactivos
+  const interactiveElements = 'a, button, input, textarea, select, [role="button"], .clickable';
+  
+  document.addEventListener('mouseover', (e) => {
+    if (e.target.closest(interactiveElements)) {
+      cursor.classList.add('hover');
+    }
+  });
+
+  document.addEventListener('mouseout', (e) => {
+    if (e.target.closest(interactiveElements)) {
+      cursor.classList.remove('hover');
+    }
+  });
+
+  // Efecto al hacer click
+  document.addEventListener('mousedown', () => {
+    cursor.classList.add('click');
+  });
+
+  document.addEventListener('mouseup', () => {
+    cursor.classList.remove('click');
+  });
+
+  // Ocultar cursor cuando sale de la ventana
+  document.addEventListener('mouseleave', () => {
+    cursor.style.opacity = '0';
+  });
+
+  document.addEventListener('mouseenter', () => {
+    cursor.style.opacity = '1';
+  });
+}
+
+// Inicializar el cursor cuando el DOM esté listo
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initCustomCursor);
+} else {
+  initCustomCursor();
+}
+
+
+
+    </script>
+</body>
+</html>

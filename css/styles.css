@@ -47,6 +47,17 @@ img {
   display: block
 }
 
+.hello{
+    animation: flotar 3s ease-in-out infinite;
+}
+
+@keyframes flotar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+
 a {
   color: inherit;
   text-decoration: none
@@ -1587,7 +1598,7 @@ line-height: 1.45;
 .small {
 font-size: 0.92rem;
 color: var(--muted);
-background-color: #ffcc0030;
+background-color: #7b61ff36;
 padding: 6px;
 border-radius: 8px;
 }
