@@ -11,7 +11,7 @@
   --radius: 18px;
   --max-w: 1200px;
   --gutter: 24px;
-  font-family: 'Poppins', system-ui;
+  font-family: 'Inter', -apple-system, system-ui, sans-serif;
   color-scheme: light;
 }
 
