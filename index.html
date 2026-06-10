@@ -109,7 +109,7 @@
           <span class="card-title">Transforming ideas into experiences</span>
         </div>
         <div class="card-body" >
-          <p style="font-size: 20px;">I'm a Senior Product Designer based in Valencia. My work sits at the intersection of <span class="highlight highlight-purple">complex data</span>, <span class="highlight highlight-cyan">AI</span>, and <span class="highlight highlight-coral">the humans</span>, who have to make decisions with them.</p>
+          <p style="font-size: 20px;">I'm a Senior Product Designer based in Valencia. My work sits at the intersection of <span class="highlight highlight-cyan">complex data</span>, <span class="highlight highlight-cyan">AI</span>, and <span class="highlight highlight-cyan">the humans</span>, who have to make decisions with them.</p>
           
           <p style="font-size: 20px;">Currently shaping conversational commerce and AI-powered search at Kimera Technologies. Previously led product design for maritime SaaS at NextPort by Moffatt & Nichol. I care about systems that scale, interfaces that respect their users, and the small details that make a product feel inevitable.</p>
         </div>
@@ -162,12 +162,27 @@
       </div>
 
      <!-- Featured project (wide) -->
-       <div class="projects-grid">
+        <div class="projects-grid">
+          <article class="project-card featured reveal disabled kimera-card">
+        <img class="project-image kimera-logo-img" src="./images/kimera-logo.svg" alt="Kimera Technologies" />
+        <div class="project-overlay">
+          <h3 class="project-title">AI-Powered Ecommerce Search & Commerce Platform</h3>
+          <p style="background-color: rgba(0, 102, 255, 0.626); border-radius: 10px; padding-left: 10px; width: 12rem;">CURRENTLY WORKING</p>
+          <div style="margin-top:12px" class="project-tags">
+            <span class="tag">Ecommerce SaaS</span>
+            <span class="tag">AI Assistant</span>
+            <span class="tag">UX/UI Design</span>
+          </div>
+          <div style="margin-top:18px">
+            <a href="/kimera" class="project-btn">SEE PROJECT →</a>
+          </div>
+        </div>
+      </article>
+
             <article class="project-card featured reveal">
         <img class="project-image" src="./images/np-hero.png" alt="Nextport" />
         <div class="project-overlay">
           <h3 class="project-title">AI-Driven UX innovation maritime SaaS </h3>
-          <p style="background-color: rgba(0, 0, 0, 0.626); border-radius: 10px; padding-left: 10px; width: 12rem;">CURRENTLY WORKING</p>
           <div style="margin-top:12px" class="project-tags">
             <span class="tag">SaaS Platform</span>
             <span class="tag">User-Centered Design</span>
@@ -357,12 +372,6 @@
       transition: all 0.3s ease;
     }
 
-    .timeline-item:hover .timeline-dot {
-      background: var(--accent-4);
-      box-shadow: 0 0 0 8px rgba(132, 158, 0, 0.2);
-      transform: translateX(-50%) scale(1.3);
-    }
-
     .company-name {
       font-size: 1.5rem;
       font-weight: 600;
@@ -379,8 +388,8 @@
 
     .years {
       display: inline-block;
-      background: rgba(132, 158, 0, 0.1);
-      color: var(--accent-4);
+      background: rgba(64, 64, 64, 0.2);
+      color: black;
       font-size: 0.85rem;
       font-weight: 500;
       padding: 4px 12px;
@@ -441,10 +450,6 @@
       .timeline-dot {
         left: 30px;
         transform: translateX(-50%);
-      }
-
-      .timeline-item:hover .timeline-dot {
-        transform: translateX(-50%) scale(1.3);
       }
 
       .company-name {
@@ -644,7 +649,7 @@
     .metric-value {
       font-size: 2.4rem;
       font-weight: 700;
-      background: linear-gradient(135deg, #7b61ffcc 0%, #fa709a 100%);
+      background: linear-gradient(135deg, #0c0c0ccc 0%, #1e40ff 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -666,7 +671,7 @@
 
     .metric-progress {
       height: 100%;
-      background: linear-gradient(90deg, #849E00 0%, #e2ff52 100%);
+      background: linear-gradient(90deg, #184eff 0%, #1d1d1d 100%);
       border-radius: 10px;
       width: 0;
       transition: width 1s ease;
